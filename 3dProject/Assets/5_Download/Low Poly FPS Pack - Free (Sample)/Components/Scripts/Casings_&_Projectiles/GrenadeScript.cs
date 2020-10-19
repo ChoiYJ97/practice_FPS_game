@@ -57,6 +57,12 @@ public class GrenadeScript : MonoBehaviour {
 
 	private void OnCollisionEnter (Collision collision) 
 	{
+        //바닥이나 벽에 팅길때 속력 감속
+        if(collision.transform.tag == "Road")
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+        }
+
 		//Play the impact sound on every collision
 		impactSound.Play ();
 	}
@@ -102,6 +108,13 @@ public class GrenadeScript : MonoBehaviour {
 				//Toggle "explode" on explosive barrel object
 				hit.gameObject.GetComponent<ExplosiveBarrelScript> ().explode = true;
 			}
+
+            //좀비 피격시 사망 + 스폰 중 무적상태일시 피격안됨
+            if (hit.GetComponent < Collider>().tag == "Zombie")
+            {
+                if(!hit.gameObject.GetComponent<ZombieScript>().isinterval())
+                    hit.gameObject.GetComponent<ZombieScript>().HpChange(0);
+            }
 		}
 
 		//Destroy the grenade object on explosion

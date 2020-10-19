@@ -62,6 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\2_Script\IngameManager.cs" />
+    <Compile Include="Assets\2_Script\ReSpawnScript.cs" />
+    <Compile Include="Assets\2_Script\TutorialText.cs" />
+    <Compile Include="Assets\2_Script\ZombieBodyScript.cs" />
     <Compile Include="Assets\2_Script\ZombieScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />

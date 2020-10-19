@@ -11,21 +11,21 @@ namespace FPSControllerLPFP
     public class FpsControllerLPFP : MonoBehaviour
     {
 #pragma warning disable 649
-		[Header("Arms")]
+        [Header("Arms")]
         [Tooltip("The transform component that holds the gun camera."), SerializeField]
         private Transform arms;
 
         [Tooltip("The position of the arms and gun camera relative to the fps controller GameObject."), SerializeField]
         private Vector3 armPosition;
 
-		[Header("Audio Clips")]
+        [Header("Audio Clips")]
         [Tooltip("The audio clip that is played while walking."), SerializeField]
         private AudioClip walkingSound;
 
         [Tooltip("The audio clip that is played while running."), SerializeField]
         private AudioClip runningSound;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
         [Tooltip("How fast the player moves while walking and strafing."), SerializeField]
         private float walkingSpeed = 5f;
 
@@ -38,7 +38,7 @@ namespace FPSControllerLPFP
         [Tooltip("Amount of force applied to the player when jumping."), SerializeField]
         private float jumpForce = 35f;
 
-		[Header("Look Settings")]
+        [Header("Look Settings")]
         [Tooltip("Rotation speed of the fps controller."), SerializeField]
         private float mouseSensitivity = 7f;
 
@@ -57,6 +57,9 @@ namespace FPSControllerLPFP
         private FpsInput input;
 #pragma warning restore 649
 
+        //added
+        private GameObject FlashLight;
+
         private Rigidbody _rigidbody;
         private CapsuleCollider _collider;
         private AudioSource _audioSource;
@@ -72,6 +75,7 @@ namespace FPSControllerLPFP
         /// Initializes the FpsController on start.
         private void Start()
         {
+            FlashLight = GameObject.Find("FlashLight");
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             _collider = GetComponent<CapsuleCollider>();
@@ -161,6 +165,9 @@ namespace FPSControllerLPFP
                            Quaternion.AngleAxis(clampedY, Vector3.left);
             transform.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0f);
 			arms.rotation = rotation;
+
+            //added
+            FlashLight.transform.rotation = rotation;
         }
 			
         /// Returns the target rotation of the camera around the y axis with no smoothing.
@@ -375,6 +382,7 @@ namespace FPSControllerLPFP
             {
                 get { return Input.GetButtonDown(jump); }
             }
+
         }
     }
 }

@@ -68,9 +68,25 @@ public class BulletScript : MonoBehaviour {
 			//Destroy bullet object
 			Destroy(gameObject);
 		}
-	}
 
-	private IEnumerator DestroyTimer () 
+        //새로 추가한 좀비용 피격판정
+        if(collision.transform.tag == "Zombie")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.transform.tag == "Road")
+        {
+            //Instantiate random impact prefab from array
+            Instantiate(metalImpactPrefabs[Random.Range
+                (0, metalImpactPrefabs.Length)], transform.position,
+                Quaternion.LookRotation(collision.contacts[0].normal));
+            //Destroy bullet object
+            Destroy(gameObject);
+        }
+
+    }
+
+    private IEnumerator DestroyTimer () 
 	{
 		//Wait random time based on min and max values
 		yield return new WaitForSeconds
