@@ -2,15 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IngameManager : MonoBehaviour
 {
+    Text ScoreText;
+
+    int Score;
     float timecheck;
     bool Re;
 
+    static IngameManager _uniqueinstance;
+
+    public static IngameManager _instance
+    {
+        get { return _uniqueinstance; }
+    }
+
+    void Awake()
+    {
+        _uniqueinstance = this;
+    }
+
     void Start()
     {
+        GameObject go = GameObject.Find("ScoreText");
+        ScoreText = go.GetComponent<Text>();
+
+        Score = 0;
         timecheck = 0;
+        ScoreText.text = Score.ToString();
         Re = false;
     }
 
@@ -29,6 +50,12 @@ public class IngameManager : MonoBehaviour
                 Replay();
             }
         }
+    }
+    
+    public void addScore()
+    {
+        Score++;
+        ScoreText.text = Score.ToString();
     }
 
     public void Replay()

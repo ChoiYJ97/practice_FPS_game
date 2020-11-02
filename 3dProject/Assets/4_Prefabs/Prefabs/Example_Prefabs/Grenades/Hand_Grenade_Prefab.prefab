@@ -489,6 +489,6 @@ MonoBehaviour:
     type: 3}
   radius: 5
   power: 3500
-  minimumForce: 1500
-  maximumForce: 2500
+  minimumForce: 1000
+  maximumForce: 1500
   impactSound: {fileID: 82305533685823640}

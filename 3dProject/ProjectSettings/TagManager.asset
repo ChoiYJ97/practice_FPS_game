@@ -10,6 +10,8 @@ TagManager:
   - Target
   - Metal
   - Road
+  - Knife
+  - ZombieArm
   layers:
   - Default
   - TransparentFX

@@ -19512,7 +19512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad207698945475e40a48abe855897cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 15
+  despawnTime: 5
   lightDuration: 0.0325
   lightFlash: {fileID: 108698185339400860}
   explosionSounds:

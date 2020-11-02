@@ -6,7 +6,7 @@ public class ExplosionScript : MonoBehaviour {
 
 	[Header("Customizable Options")]
 	//How long before the explosion prefab is destroyed
-	public float despawnTime = 10.0f;
+	public float despawnTime = 5.0f;
 	//How long the light flash is visible
 	public float lightDuration = 0.02f;
 	[Header("Light")]

@@ -23,9 +23,9 @@ public class GrenadeScript : MonoBehaviour {
 
 	[Header("Throw Force")]
 	[Tooltip("Minimum throw force")]
-	public float minimumForce = 1500.0f;
+	public float minimumForce = 1000.0f;
 	[Tooltip("Maximum throw force")]
-	public float maximumForce = 2500.0f;
+	public float maximumForce = 1500.0f;
 	private float throwForce;
 
 	[Header("Audio")]
@@ -57,12 +57,6 @@ public class GrenadeScript : MonoBehaviour {
 
 	private void OnCollisionEnter (Collision collision) 
 	{
-        //바닥이나 벽에 팅길때 속력 감속
-        if(collision.transform.tag == "Road")
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-        }
-
 		//Play the impact sound on every collision
 		impactSound.Play ();
 	}

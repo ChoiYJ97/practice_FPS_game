@@ -158,7 +158,11 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 	private bool soundHasPlayed = false;
 
-	private void Awake () {
+    int grenadeCount;
+    //---------------------------------------------------------------------------
+
+
+    private void Awake () {
 		
 		//Set the animator component
 		anim = GetComponent<Animator>();
@@ -166,6 +170,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		currentAmmo = ammo;
 
 		muzzleflashLight.enabled = false;
+
+        //수류탄 스크립트 초기화
+        grenadeCount = 3;
 	}
 
 	private void Start () {
@@ -248,37 +255,38 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			randomMuzzleflashValue = Random.Range (minRandomValue, maxRandomValue);
 		}
 
-		//Timescale settings
-		//Change timescale to normal when 1 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha1)) 
-		{
-			Time.timeScale = 1.0f;
-			timescaleText.text = "1.0";
-		}
-		//Change timesccale to 50% when 2 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha2)) 
-		{
-			Time.timeScale = 0.5f;
-			timescaleText.text = "0.5";
-		}
-		//Change timescale to 25% when 3 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha3)) 
-		{
-			Time.timeScale = 0.25f;
-			timescaleText.text = "0.25";
-		}
-		//Change timescale to 10% when 4 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha4)) 
-		{
-			Time.timeScale = 0.1f;
-			timescaleText.text = "0.1";
-		}
-		//Pause game when 5 key is pressed
-		if (Input.GetKeyDown (KeyCode.Alpha5)) 
-		{
-			Time.timeScale = 0.0f;
-			timescaleText.text = "0.0";
-		}
+        //Timescale settings
+        {//Change timescale to normal when 1 key is pressed
+         //if (Input.GetKeyDown (KeyCode.Alpha1)) 
+         //{
+         //	Time.timeScale = 1.0f;
+         //	timescaleText.text = "1.0";
+         //}
+         ////Change timesccale to 50% when 2 key is pressed
+         //if (Input.GetKeyDown (KeyCode.Alpha2)) 
+         //{
+         //	Time.timeScale = 0.5f;
+         //	timescaleText.text = "0.5";
+         //}
+         ////Change timescale to 25% when 3 key is pressed
+         //if (Input.GetKeyDown (KeyCode.Alpha3)) 
+         //{
+         //	Time.timeScale = 0.25f;
+         //	timescaleText.text = "0.25";
+         //}
+         ////Change timescale to 10% when 4 key is pressed
+         //if (Input.GetKeyDown (KeyCode.Alpha4)) 
+         //{
+         //	Time.timeScale = 0.1f;
+         //	timescaleText.text = "0.1";
+         //}
+         ////Pause game when 5 key is pressed
+         //if (Input.GetKeyDown (KeyCode.Alpha5)) 
+         //{
+         //	Time.timeScale = 0.0f;
+         //	timescaleText.text = "0.0";
+         //}
+        }
 
 		//Set current ammo text from ammo int
 		currentAmmoText.text = currentAmmo.ToString ();
@@ -298,12 +306,18 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			anim.Play ("Knife Attack 2", 0, 0f);
 		}
 			
-		//Throw grenade when pressing G key
-		if (Input.GetKeyDown (KeyCode.G) && !isInspecting) 
+		//Throw grenade when pressing Number3 key
+        //수류탄의 갯수를 정해 놓았다. 사용시 -1씩 감소하고 0이 되면 안 눌린다.
+		if (Input.GetKeyDown (KeyCode.Alpha3) && !isInspecting) 
 		{
+            if(grenadeCount == 0)
+            {
+                return;
+            }
 			StartCoroutine (GrenadeSpawnDelay ());
 			//Play grenade throw animation
 			anim.Play("GrenadeThrow", 0, 0.0f);
+            grenadeCount--;
 		}
 
 		//If out of ammo
@@ -455,11 +469,12 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			anim.SetBool ("Holster", false);
 		}
 
-		//Reload 
+		//Reload 수류탄도 같이 채워지게 조치해둠 이후 변경할 예정
 		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting) 
 		{
 			//Reload
 			Reload ();
+            grenadeCount = 3;
 		}
 
 		//Walking when pressing down WASD keys
