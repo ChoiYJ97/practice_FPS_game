@@ -190,6 +190,9 @@ MonoBehaviour:
   maxDestroyTime: 0.05
   metalImpactPrefabs:
   - {fileID: 4458509032938956, guid: 79927c6543a058b4383885fac101fe2e, type: 3}
+  bloodPar:
+  - {fileID: 6069909457472980096, guid: 0c2b3a9b2cf8a104b8ab74270e37b41e, type: 3}
+  - {fileID: 3840769477460812813, guid: 8bbccc8965c0ca84bb04205136c75e62, type: 3}
 --- !u!1 &1231345400216816
 GameObject:
   m_ObjectHideFlags: 0

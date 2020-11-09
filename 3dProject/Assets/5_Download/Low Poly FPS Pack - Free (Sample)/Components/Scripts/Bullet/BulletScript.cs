@@ -17,7 +17,16 @@ public class BulletScript : MonoBehaviour {
 	[Header("Impact Effect Prefabs")]
 	public Transform [] metalImpactPrefabs;
 
-	private void Start () 
+    //피 터지는 효과
+    public Transform [] bloodPar;
+    Transform _trans;
+
+    private void Awake()
+    {
+        _trans = gameObject.GetComponent<Transform>();
+    }
+
+    private void Start () 
 	{
 		//Start destroy timer
 		StartCoroutine (DestroyAfter ());
@@ -72,8 +81,12 @@ public class BulletScript : MonoBehaviour {
         //새로 추가한 좀비용 피격판정
         if(collision.transform.tag == "Zombie")
         {
+            Instantiate(bloodPar[Random.Range
+                (0, bloodPar.Length)], _trans.position,
+                Quaternion.LookRotation(collision.contacts[0].normal));
             Destroy(gameObject);
         }
+        //도로 바닥 피격
         if (collision.transform.tag == "Road")
         {
             //Instantiate random impact prefab from array

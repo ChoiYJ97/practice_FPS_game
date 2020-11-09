@@ -62,11 +62,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\2_Script\BloodParticleScript.cs" />
+    <Compile Include="Assets\2_Script\HittedUIScript.cs" />
     <Compile Include="Assets\2_Script\IngameManager.cs" />
     <Compile Include="Assets\2_Script\KnifeScript.cs" />
+    <Compile Include="Assets\2_Script\LobbyCameraMoving.cs" />
+    <Compile Include="Assets\2_Script\LobbyZombie.cs" />
     <Compile Include="Assets\2_Script\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ReSpawnScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
+    <Compile Include="Assets\2_Script\TitleScript.cs" />
     <Compile Include="Assets\2_Script\TutorialText.cs" />
     <Compile Include="Assets\2_Script\ZombieScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />

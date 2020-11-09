@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -14,7 +14,9 @@ public class SceneManagerScript : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         _uniqueinstance = this;
+        Lobby_Game();
     }
 
     void Start()
@@ -29,7 +31,22 @@ public class SceneManagerScript : MonoBehaviour
             Exit_Game();
         }
     }
-
+    public void Lobby_Game()
+    {
+        SceneManager.LoadScene("LobbyScene");
+    }
+    public void Story_mode()
+    {
+        SceneManager.LoadScene("StoryMode");
+    }
+    public void DeathMatch_mode()
+    {
+        SceneManager.LoadScene("DeathMatchMode");
+    }
+    public void Tutorial_mode()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
     public void Exit_Game()
     {
 #if UNITY_EDITOR

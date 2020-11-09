@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 #pragma warning disable CS0649
 
 public class ZombieScript : MonoBehaviour
@@ -12,7 +13,7 @@ public class ZombieScript : MonoBehaviour
     Transform FirstDesti;
     GameObject go;
     NavMeshAgent nvAgent;
-    BoxCollider ZombieCollider;   
+    BoxCollider ZombieCollider;
 
     [SerializeField] int Hp;
     [SerializeField] CapsuleCollider ArmL;
@@ -84,7 +85,7 @@ public class ZombieScript : MonoBehaviour
         {
             distance = Vector3.Distance(playerTransform.position, _trans.position);
 
-            if (distance <= 20.0f)
+            if (distance <= 30.0f)
             {
                 find = true;
                 nvAgent.destination = playerTransform.position;
@@ -95,7 +96,7 @@ public class ZombieScript : MonoBehaviour
                 else if (hitted)
                     Running();
             }
-            else if (distance > 20.0f && !hitted)
+            else if (distance > 30.0f && !hitted)
             {
                 hitted = false;
                 find = false;
