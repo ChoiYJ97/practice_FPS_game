@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/1_Scene/DeathMatchMode.unity
+- path: Assets/1_Scene/StartEmptyScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

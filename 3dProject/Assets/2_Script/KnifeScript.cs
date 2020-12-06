@@ -4,17 +4,56 @@ using UnityEngine;
 
 public class KnifeScript : MonoBehaviour
 {
-    MeshCollider coll;
+    public Transform[] bloodPar;
+    Transform _trans;
 
-    // Start is called before the first frame update
+    float timecheck;
+    bool interval;
+
     void Start()
     {
-        coll = gameObject.GetComponent<MeshCollider>();
-        coll.transform.rotation = new Quaternion(0, 90, 0, 0);
+        _trans = gameObject.GetComponent<Transform>();
+        interval = false;
+        timecheck = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Q))
+        {
+            interval = true;
+        }
+        if (interval)
+        {
+            timecheck += Time.deltaTime;
+            if (timecheck >= 0.6f)
+            {
+                interval = false;
+                timecheck = 0;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Zombie" && interval)
+        {
+            IngameManager._instance.addScore(1);
+            if (!other.gameObject.GetComponent<ZombieScript>().isinterval())
+            {
+                Instantiate(bloodPar[Random.Range(0, bloodPar.Length)], _trans);
+                other.gameObject.GetComponent<ZombieScript>().HpChange(5);
+            }
+        }
+
+        if (other.transform.tag == "SpecialZombie" && interval)
+        {
+            IngameManager._instance.addScore(1);
+            if (!other.gameObject.GetComponent<SpecialZombie_First>().isinterval())
+            {
+                Instantiate(bloodPar[Random.Range(0, bloodPar.Length)], _trans);
+                other.gameObject.GetComponent<SpecialZombie_First>().HpChange(5);
+            }
+        }
     }
 }

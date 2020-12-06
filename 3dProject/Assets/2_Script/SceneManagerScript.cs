@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#pragma warning disable CS0649
+#pragma warning disable CS0414
 
 public class SceneManagerScript : MonoBehaviour
 {
-
+    int Score;
+    static int Hard;
     static SceneManagerScript _uniqueinstance;
     public static SceneManagerScript _instance
     {
@@ -21,7 +24,9 @@ public class SceneManagerScript : MonoBehaviour
 
     void Start()
     {
-        
+        Score = 0;
+        Hard = 0;
+        Screen.SetResolution(1024, 768, true);
     }
 
     void Update()
@@ -39,13 +44,25 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene("StoryMode");
     }
-    public void DeathMatch_mode()
+    public void DeathMatch_mode_Normal()
     {
+        Hard = 0;
+        Debug.Log("난이도 " + Hard);
+        SceneManager.LoadScene("DeathMatchMode");
+    }
+    public void DeathMatch_mode_Hard()
+    {
+        Hard = 1;
+        Debug.Log("난이도 " + Hard);
         SceneManager.LoadScene("DeathMatchMode");
     }
     public void Tutorial_mode()
     {
         SceneManager.LoadScene("TutorialScene");
+    }
+    public void Result_Scene()
+    {
+        SceneManager.LoadScene("ResultScene");
     }
     public void Exit_Game()
     {
@@ -57,5 +74,30 @@ public class SceneManagerScript : MonoBehaviour
         Application.Quit();
 #endif
 
+    }
+
+    public void Scoresave(int score)
+    {
+        if (Score < score)
+            Score = score;
+        else
+            return;
+    }
+    public int GetScore()
+    {
+        return Score;
+    }
+    //public void selectHard()
+    //{
+    //    currentDifficulty = 1;
+    //}
+    //public void selectNormal()
+    //{
+    //    currentDifficulty = 0;
+    //}
+
+    public int currDifficulty()
+    {
+         return Hard;
     }
 }

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\2_Script\BloodParticleScript.cs" />
+    <Compile Include="Assets\2_Script\DifficultyHard.cs" />
     <Compile Include="Assets\2_Script\HittedUIScript.cs" />
     <Compile Include="Assets\2_Script\IngameManager.cs" />
     <Compile Include="Assets\2_Script\KnifeScript.cs" />
@@ -70,7 +71,10 @@
     <Compile Include="Assets\2_Script\LobbyZombie.cs" />
     <Compile Include="Assets\2_Script\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ReSpawnScript.cs" />
+    <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
+    <Compile Include="Assets\2_Script\SpecialZombie_First.cs" />
+    <Compile Include="Assets\2_Script\TDTextScore.cs" />
     <Compile Include="Assets\2_Script\TitleScript.cs" />
     <Compile Include="Assets\2_Script\TutorialText.cs" />
     <Compile Include="Assets\2_Script\ZombieScript.cs" />
@@ -86,6 +90,12 @@
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\8_Font\Fonts\Script\scriptTexttest.cs" />
+    <Compile Include="Assets\BlackMetal UI\Demo_Assets\scripts\GUI_Demo.cs" />
+    <None Include="Assets\8_Font\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+    <None Include="Assets\5_Download\FreeMachineGun\Shader\BDCS.shader" />
+    <None Include="Assets\5_Download\FreeMachineGun\documentation.txt" />
+    <None Include="Assets\8_Font\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -106,6 +116,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

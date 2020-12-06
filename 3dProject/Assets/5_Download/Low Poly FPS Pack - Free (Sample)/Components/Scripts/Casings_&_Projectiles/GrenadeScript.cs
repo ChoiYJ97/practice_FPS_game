@@ -106,8 +106,14 @@ public class GrenadeScript : MonoBehaviour {
             //좀비 피격시 사망 + 스폰 중 무적상태일시 피격안됨
             if (hit.GetComponent < Collider>().tag == "Zombie")
             {
-                if(!hit.gameObject.GetComponent<ZombieScript>().isinterval())
-                    hit.gameObject.GetComponent<ZombieScript>().HpChange(0);
+                if (!hit.gameObject.GetComponent<ZombieScript>().isinterval())
+                    hit.gameObject.GetComponent<ZombieScript>().HpChange(50);
+            }
+
+            if(hit.GetComponent<Collider>().tag == "SpecialZombie")
+            {
+                if (!hit.gameObject.GetComponent<SpecialZombie_First>().isinterval())
+                    hit.gameObject.GetComponent<SpecialZombie_First>().HpChange(50);
             }
 		}
 

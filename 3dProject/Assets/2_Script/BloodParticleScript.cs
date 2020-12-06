@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class BloodParticleScript : MonoBehaviour
 {
-    public ParticleSystem bloodPar;
-
+    float timecheck;
     void Start()
     {
-        
+        timecheck = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        timecheck += Time.deltaTime;
+        if (timecheck >= 2.0f)
+            Destroy(gameObject);
     }
 }

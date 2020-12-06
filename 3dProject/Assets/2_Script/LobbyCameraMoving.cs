@@ -15,6 +15,7 @@ public class LobbyCameraMoving : MonoBehaviour
     NavMeshAgent nvAgent;
     Transform CameraTrans;
     Transform LookatPosforSelectMode;
+    public GameObject HighScoreText;
 
     float FirstDis, ModeDis, SelectDis, StoryDis, DeathMDis, activeDis,
         TutorialDis;
@@ -48,7 +49,7 @@ public class LobbyCameraMoving : MonoBehaviour
 
         nvAgent = go.GetComponent<NavMeshAgent>();
 
-        Buttons = new GameObject[9];
+        Buttons = new GameObject[10];
 
         CameraTrans = go.GetComponent<Transform>();
 
@@ -61,6 +62,7 @@ public class LobbyCameraMoving : MonoBehaviour
         Buttons[6] = GameObject.Find("GoTutorialButton");
         Buttons[7] = GameObject.Find("GoTutorialModeButton");
         Buttons[8] = GameObject.Find("GoBackButton_tu");
+        Buttons[9] = GameObject.Find("GoDeathMachModeButtonHard");
 
         go = GameObject.Find("DetourSign");
 
@@ -95,17 +97,26 @@ public class LobbyCameraMoving : MonoBehaviour
     {
         if (currentLocation ==location.SelectGameModeL && !selected)
         {
-            if(SelectDis <= 10.0f)
-                nvAgent.speed = 7.5f;
+            if(SelectDis <= 30.0f && nvAgent.speed <= 1000)
+                nvAgent.speed += 1.5f + Time.deltaTime*2;
             SelectModeLookat();
         }
         if (selected)
-            nvAgent.speed = 3.5f;
+        {
+            nvAgent.speed += 1.0f + Time.deltaTime;
+        }
 
         if(!SecLocBool && ModeDis <= 8.0f)
         {
             LookatSecLocation();
         }
+
+        if(SelectDis <= 3.0f)
+        {
+            HighScoreText.SetActive(true);
+        }
+        else
+            HighScoreText.SetActive(false);
     }
 
     public void MoveLocation(int index)
@@ -204,11 +215,13 @@ public class LobbyCameraMoving : MonoBehaviour
         {
             Buttons[4].gameObject.SetActive(true);
             Buttons[5].gameObject.SetActive(true);
+            Buttons[9].gameObject.SetActive(true);
         }
         else
         {
             Buttons[4].gameObject.SetActive(false);
             Buttons[5].gameObject.SetActive(false);
+            Buttons[9].gameObject.SetActive(false);
         }
     }
 

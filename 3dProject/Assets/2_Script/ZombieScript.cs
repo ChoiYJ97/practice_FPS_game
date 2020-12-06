@@ -13,7 +13,8 @@ public class ZombieScript : MonoBehaviour
     Transform FirstDesti;
     GameObject go;
     NavMeshAgent nvAgent;
-    BoxCollider ZombieCollider;
+    BoxCollider Box;
+    SceneManagerScript diffculty;
 
     [SerializeField] int Hp;
     [SerializeField] CapsuleCollider ArmL;
@@ -33,44 +34,61 @@ public class ZombieScript : MonoBehaviour
 
     float distance;
     float timecheck = 0;
+    float WalkSpeed, RunSpeed;
     bool find;
     bool hitted;
     bool interval;
     bool isdead;
+    bool start;
+    int currentDiff, score;
 
     void Awake()
     {
         _trans = gameObject.GetComponent<Transform>();
-        playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         go = GameObject.Find("FirstDestination");
         FirstDesti = go.GetComponent<Transform>();
         nvAgent = gameObject.GetComponent<NavMeshAgent>();
         aniZombie = gameObject.GetComponent<Animator>();
-        ZombieCollider = gameObject.GetComponent<BoxCollider>();
+        Box = gameObject.GetComponent<BoxCollider>();
+        diffculty = GameObject.Find("Scene_Manager").GetComponent<SceneManagerScript>();
     }
     void Start()
     {
         ArmL.isTrigger = false;
         ArmR.isTrigger = false;
         distance = Vector3.Distance(playerTransform.position, _trans.position);
-        Hp = 10;
+        start = false;
         find = false;
         hitted = false;
         interval = true;
         isdead = false;
+        currentDiff = SceneManagerScript._instance.currDifficulty();
     }
 
     void Update()
     {
+        currentDiff = SceneManagerScript._instance.currDifficulty();
+
+        if (!start)
+        {
+            if (currentDiff == 1)
+                HardMode();
+            else
+                NormalMode();
+            start = true;
+        }
+
         if (Hp <= 0)
         {
             if (!isdead)
             {
-                IngameManager._instance.addScore();
+                IngameManager._instance.countKilledNZ();
+                IngameManager._instance.addScore(score);
                 isdead = true;
             }
+            Box.size = new Vector3(0, 0, 0);
             nvAgent.height = 0.01f;
-            ZombieCollider.size = new Vector3(0, 0, 0);
             timecheck += Time.deltaTime;
             Dead();
             if (timecheck >= 2.5f)
@@ -121,7 +139,7 @@ public class ZombieScript : MonoBehaviour
             Walking(false);
             nvAgent.destination = FirstDesti.position;
             timecheck += Time.deltaTime;
-            if(timecheck >= 8.0f)
+            if(timecheck >= 6.0f)
             {
                 timecheck = 0;
                 interval = false;
@@ -143,12 +161,12 @@ public class ZombieScript : MonoBehaviour
     {
         if (found)
         {
-            ZomSpeed(1.5f);
+            ZomSpeed(WalkSpeed);
             aniZombie.SetInteger("Anistate", (int)aniState.WALK_HANDUP);
         }
         else
         {
-            ZomSpeed(1.5f);
+            ZomSpeed(WalkSpeed);
             aniZombie.SetInteger("Anistate", (int)aniState.WALK_HANDDOWN);
         }
         ArmColliderIsNotTriggr();
@@ -156,14 +174,14 @@ public class ZombieScript : MonoBehaviour
 
     public void Running()
     {
-        ZomSpeed(3.5f);
+        ZomSpeed(RunSpeed);
         aniZombie.SetInteger("Anistate", (int)aniState.RUN);
         ArmColliderIsNotTriggr();
     }
 
     public void Attack()
     {
-        ZomSpeed(0);
+        ZomSpeed(0.001f);
         aniZombie.SetInteger("Anistate", (int)aniState.ATTACK);
         ArmColliderIsTrigger();
     }
@@ -186,26 +204,13 @@ public class ZombieScript : MonoBehaviour
 
         if (other.transform.tag == "Bullet" && !interval)
         {
+            IngameManager._instance.addScore(1);
             hitted = true;
-            Hp--;
+            HpChange(1);
             if (!find)
                 find = true;
         }
-        
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (Hp <= 0)
-            return;
-
-        if (other.transform.tag == "Knife" && !interval)
-        {
-            hitted = true;
-            Hp--;
-            if (!find)
-                find = true;
-        }
     }
 
     public int Currenthp()
@@ -214,7 +219,7 @@ public class ZombieScript : MonoBehaviour
     }
     public void HpChange(int hp)
     {
-        Hp = hp;
+        Hp -= hp;
     }
     public  bool isinterval()
     {
@@ -230,5 +235,21 @@ public class ZombieScript : MonoBehaviour
     {
         ArmR.isTrigger = false;
         ArmL.isTrigger = false;
+    }
+
+    void HardMode()
+    {
+        Hp = 20;
+        WalkSpeed = 2.0f;
+        RunSpeed = 4.0f;
+        score = 40;
+    }
+
+    void NormalMode()
+    {
+        Hp = 10;
+        WalkSpeed = 1.5f;
+        RunSpeed = 3.5f;
+        score = 20;
     }
 }

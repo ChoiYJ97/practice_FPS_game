@@ -12,6 +12,13 @@ TagManager:
   - Road
   - Knife
   - ZombieArm
+  - Weapon
+  - SecondCamera
+  - BulletSpawn
+  - LevelPart
+  - Dummie
+  - SpecialZombie
+  - SZombieArm
   layers:
   - Default
   - TransparentFX
@@ -23,11 +30,11 @@ TagManager:
   - 
   - PlayerCannotPass
   - Zombie
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Knife
+  - Weapon
+  - PlayerMarker
+  - Minmap
   - 
   - 
   - 

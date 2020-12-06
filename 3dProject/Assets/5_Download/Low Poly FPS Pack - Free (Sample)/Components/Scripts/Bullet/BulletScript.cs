@@ -79,13 +79,23 @@ public class BulletScript : MonoBehaviour {
 		}
 
         //새로 추가한 좀비용 피격판정
-        if(collision.transform.tag == "Zombie")
+        if (collision.transform.tag == "Zombie")
         {
             Instantiate(bloodPar[Random.Range
                 (0, bloodPar.Length)], _trans.position,
                 Quaternion.LookRotation(collision.contacts[0].normal));
             Destroy(gameObject);
         }
+
+        //스페셜 좀비
+        if (collision.transform.tag == "SpecialZombie")
+        {
+            Instantiate(bloodPar[Random.Range
+                (0, bloodPar.Length)], _trans.position,
+                Quaternion.LookRotation(collision.contacts[0].normal));
+            Destroy(gameObject);
+        }
+
         //도로 바닥 피격
         if (collision.transform.tag == "Road")
         {

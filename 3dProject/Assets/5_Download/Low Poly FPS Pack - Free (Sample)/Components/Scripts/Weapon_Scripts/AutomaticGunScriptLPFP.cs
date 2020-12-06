@@ -22,10 +22,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 	public float aimFov = 25.0f;
 
-	[Header("UI Weapon Name")]
-	[Tooltip("Name of the current weapon, shown in the game UI.")]
-	public string weaponName;
-	private string storedWeaponName;
+	//[Header("UI Weapon Name")]
+	//[Tooltip("Name of the current weapon, shown in the game UI.")]
+	//public string weaponName;
+	//private string storedWeaponName;
 
 	[Header("Weapon Sway")]
 	//Enables weapon sway
@@ -53,9 +53,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	private bool isReloading;
 
 	//Holstering weapon
-	private bool hasBeenHolstered = false;
+	//private bool hasBeenHolstered = false;
 	//If weapon is holstered
-	private bool holstered;
+	//private bool holstered;
 	//Check if running
 	private bool isRunning;
 	//Check if aiming
@@ -114,8 +114,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	public AudioSource shootAudioSource;
 
 	[Header("UI Components")]
-	public Text timescaleText;
-	public Text currentWeaponText;
+	//public Text timescaleText;
+	//public Text currentWeaponText;
 	public Text currentAmmoText;
 	public Text totalAmmoText;
 
@@ -158,6 +158,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 	private bool soundHasPlayed = false;
 
+    //수류탄 갯수
+    public Text grenadeCountTxt;
     int grenadeCount;
     //---------------------------------------------------------------------------
 
@@ -178,9 +180,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	private void Start () {
 		
 		//Save the weapon name
-		storedWeaponName = weaponName;
+		//storedWeaponName = weaponName;
 		//Get weapon name from string to text
-		currentWeaponText.text = weaponName;
+		//currentWeaponText.text = weaponName;
 		//Set total ammo text from total ammo int
 		totalAmmoText.text = ammo.ToString();
 
@@ -189,6 +191,8 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 		//Set the shoot sound to audio source
 		shootAudioSource.clip = SoundClips.shootSound;
+
+        grenadeCountTxt.text = grenadeCount.ToString() + "/3";
 	}
 
 	private void LateUpdate () {
@@ -213,6 +217,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 	}
 	
 	private void Update () {
+
+        if (IngameManager._instance.IsDead())
+            return;
+
 
 		//Aiming
 		//Toggle camera FOV when right click is held down
@@ -318,13 +326,14 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			//Play grenade throw animation
 			anim.Play("GrenadeThrow", 0, 0.0f);
             grenadeCount--;
-		}
+            grenadeCountTxt.text = grenadeCount.ToString() + "/3";
+        }
 
-		//If out of ammo
-		if (currentAmmo == 0) 
+        //If out of ammo
+        if (currentAmmo == 0) 
 		{
 			//Show out of ammo text
-			currentWeaponText.text = "OUT OF AMMO";
+			//currentWeaponText.text = "OUT OF AMMO";
 			//Toggle bool
 			outOfAmmo = true;
 			//Auto reload if true
@@ -336,7 +345,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		else 
 		{
 			//When ammo is full, show weapon name again
-			currentWeaponText.text = storedWeaponName.ToString ();
+			//currentWeaponText.text = storedWeaponName.ToString ();
 			//Toggle bool
 			outOfAmmo = false;
 			//anim.SetBool ("Out Of Ammo", false);
@@ -440,34 +449,36 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			anim.SetTrigger ("Inspect");
 		}
 
-		//Toggle weapon holster when E key is pressed
-		if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered) 
-		{
-			holstered = true;
+        //E키 관련  원본 코딩
+        {////Toggle weapon holster when E key is pressed
+         //if (Input.GetKeyDown (KeyCode.E) && !hasBeenHolstered) 
+         //{
+         //	holstered = true;
 
-			mainAudioSource.clip = SoundClips.holsterSound;
-			mainAudioSource.Play();
+            //	mainAudioSource.clip = SoundClips.holsterSound;
+            //	mainAudioSource.Play();
 
-			hasBeenHolstered = true;
-		} 
-		else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered) 
-		{
-			holstered = false;
+            //	hasBeenHolstered = true;
+            //} 
+            //else if (Input.GetKeyDown (KeyCode.E) && hasBeenHolstered) 
+            //{
+            //	holstered = false;
 
-			mainAudioSource.clip = SoundClips.takeOutSound;
-			mainAudioSource.Play ();
+            //	mainAudioSource.clip = SoundClips.takeOutSound;
+            //	mainAudioSource.Play ();
 
-			hasBeenHolstered = false;
-		}
-		//Holster anim toggle
-		if (holstered == true) 
-		{
-			anim.SetBool ("Holster", true);
-		} 
-		else 
-		{
-			anim.SetBool ("Holster", false);
-		}
+            //	hasBeenHolstered = false;
+            //}
+            ////Holster anim toggle
+            //if (holstered == true) 
+            //{
+            //	anim.SetBool ("Holster", true);
+            //} 
+            //else 
+            //{
+            //	anim.SetBool ("Holster", false);
+            //}
+        }
 
 		//Reload 수류탄도 같이 채워지게 조치해둠 이후 변경할 예정
 		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting) 
@@ -475,10 +486,11 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			//Reload
 			Reload ();
             grenadeCount = 3;
-		}
+            grenadeCountTxt.text = grenadeCount.ToString() + "/3";
+        }
 
-		//Walking when pressing down WASD keys
-		if (Input.GetKey (KeyCode.W) && !isRunning || 
+        //Walking when pressing down WASD keys
+        if (Input.GetKey (KeyCode.W) && !isRunning || 
 			Input.GetKey (KeyCode.A) && !isRunning || 
 			Input.GetKey (KeyCode.S) && !isRunning || 
 			Input.GetKey (KeyCode.D) && !isRunning) 
