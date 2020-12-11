@@ -25,6 +25,8 @@ public class ReSpawnScript : MonoBehaviour
     int currentDiff, currentWave;
     int numNormalZ, numSpecialZ;
     int countNSpawned, countSSpawned;
+    bool SpeedUp;
+    int DoubleSpeed = 1;
 
     private void Awake()
     {
@@ -51,14 +53,16 @@ public class ReSpawnScript : MonoBehaviour
         currentWave = IngameManager._instance.CurrentWave();
         Debug.Log("현재 웨이브 " + currentWave);
         Debug.Log(IngameManager._instance.CurrentWave());
-        WaveTitle.SetActive(false);
+        WaveTitle.SetActive(true);
+        SpeedUp = false;
     }
 
     void Update()
     {
         HardOrNot();
+        OnOffSpeedUp();
 
-        if(currentWave == IngameManager._instance.CurrentWave())
+        if (currentWave == IngameManager._instance.CurrentWave())
         {
             NumofZombies();
             StartRespawnFuc();
@@ -67,7 +71,14 @@ public class ReSpawnScript : MonoBehaviour
         if(currentWave == (IngameManager._instance.CurrentWave() - 1))
         {
             waveTerm += Time.deltaTime;
-            if (waveTerm >= 10.0f)
+            if(waveTerm >= 5.0f / DoubleSpeed)
+            {
+                
+                WaveTitle.SetActive(true);
+                WaveText.text = (currentWave+1).ToString();
+                WaveTextSmall.text = (currentWave + 1).ToString();
+            }
+            if (waveTerm >= 8.0f / DoubleSpeed)
             {
                 countDown = 0;
                 countSSpawned = 0;
@@ -75,9 +86,6 @@ public class ReSpawnScript : MonoBehaviour
                 currentWave++;
                 waveTerm = 0;
                 Debug.Log("현재 웨이브 " + currentWave);
-                WaveTitle.SetActive(true);
-                WaveText.text = currentWave.ToString();
-                WaveTextSmall.text = currentWave.ToString();
             }
         }
         
@@ -87,7 +95,7 @@ public class ReSpawnScript : MonoBehaviour
     void StartRespawnFuc()
     {
         timecheck += Time.deltaTime;
-        if (timecheck >= RespawnTime)
+        if (timecheck >= (RespawnTime/DoubleSpeed))
         {
             WaveTitle.SetActive(false);
             ZombieRespawn();
@@ -155,5 +163,14 @@ public class ReSpawnScript : MonoBehaviour
         {
             IngameManager._instance.NextWave();
         }
+    }
+
+    public void OnOffSpeedUp()
+    {
+        SpeedUp = IngameManager._instance.OnOffSpeedUp();
+        if (SpeedUp)
+            DoubleSpeed = 2;
+        else
+            DoubleSpeed = 1;
     }
 }

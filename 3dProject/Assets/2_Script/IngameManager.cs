@@ -16,6 +16,7 @@ public class IngameManager : MonoBehaviour
     float timecheck;
     bool Re;
     bool isdead;
+    bool doubleSpeed;
     int currentWave;
 
     static IngameManager _uniqueinstance;
@@ -27,6 +28,7 @@ public class IngameManager : MonoBehaviour
 
     void Awake()
     {
+        doubleSpeed = false;
         _uniqueinstance = this;
         isdead = false;
         DBGimg = DiedBG.GetComponent<Image>();
@@ -117,5 +119,18 @@ public class IngameManager : MonoBehaviour
     {
         killedSZ++;
         Debug.Log("특수좀비 킬 " + killedSZ);
+    }
+
+    public void OnOffDoubleSpeed()
+    {
+        if (doubleSpeed)
+            doubleSpeed = false;
+        else
+            doubleSpeed = true;
+    }
+
+    public bool OnOffSpeedUp()
+    {
+        return doubleSpeed;
     }
 }

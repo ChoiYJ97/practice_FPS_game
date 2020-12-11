@@ -56,6 +56,10 @@ public class SceneManagerScript : MonoBehaviour
         Debug.Log("난이도 " + Hard);
         SceneManager.LoadScene("DeathMatchMode");
     }
+    public void RestartDeathMatchMode()
+    {
+        SceneManager.LoadScene("DeathMatchMode");
+    }
     public void Tutorial_mode()
     {
         SceneManager.LoadScene("TutorialScene");
@@ -87,14 +91,6 @@ public class SceneManagerScript : MonoBehaviour
     {
         return Score;
     }
-    //public void selectHard()
-    //{
-    //    currentDifficulty = 1;
-    //}
-    //public void selectNormal()
-    //{
-    //    currentDifficulty = 0;
-    //}
 
     public int currDifficulty()
     {

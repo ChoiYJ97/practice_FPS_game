@@ -64,12 +64,14 @@
   <ItemGroup>
     <Compile Include="Assets\2_Script\BloodParticleScript.cs" />
     <Compile Include="Assets\2_Script\DifficultyHard.cs" />
+    <Compile Include="Assets\2_Script\FirstAidKit.cs" />
     <Compile Include="Assets\2_Script\HittedUIScript.cs" />
     <Compile Include="Assets\2_Script\IngameManager.cs" />
     <Compile Include="Assets\2_Script\KnifeScript.cs" />
     <Compile Include="Assets\2_Script\LobbyCameraMoving.cs" />
     <Compile Include="Assets\2_Script\LobbyZombie.cs" />
     <Compile Include="Assets\2_Script\PlayerScript.cs" />
+    <Compile Include="Assets\2_Script\RadioSpawnSpeed.cs" />
     <Compile Include="Assets\2_Script\ReSpawnScript.cs" />
     <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />

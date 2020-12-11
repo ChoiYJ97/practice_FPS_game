@@ -152,6 +152,17 @@ namespace FPSControllerLPFP
 			arms.position = transform.position + transform.TransformVector(armPosition);
             Jump();
             PlayFootstepSounds();
+
+            if (mouseSensitivity >= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftBracket))
+                    mouseSensitivity--;
+                if (Input.GetKeyDown(KeyCode.RightBracket))
+                    mouseSensitivity++;
+            }
+            else if (mouseSensitivity < 0)
+                mouseSensitivity = 0;
+
         }
 
         private void RotateCameraAndCharacter()

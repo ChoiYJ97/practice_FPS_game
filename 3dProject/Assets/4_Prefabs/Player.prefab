@@ -1585,8 +1585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99920a982b8ce249a28b36e77973d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpSlider: {fileID: 0}
+  HpSlider: {fileID: 4866915451112753578}
   HittedImpact: {fileID: 8431413763211614649}
+  HpFillImg: {fileID: 1177360392412257787}
 --- !u!1 &3050412869457297591
 GameObject:
   m_ObjectHideFlags: 0

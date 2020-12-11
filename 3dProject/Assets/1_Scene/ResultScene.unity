@@ -887,7 +887,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1956728463499775283, guid: ddd70014ef98920429b42f09cc5560a6,
           type: 3}
-        m_MethodName: DeathMatch_mode
+        m_MethodName: RestartDeathMatchMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

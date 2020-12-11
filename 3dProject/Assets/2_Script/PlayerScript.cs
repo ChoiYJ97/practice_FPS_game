@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour
 {
     public Slider HpSlider;
     public Image HittedImpact;
-    int hp = 100;
+    public Image HpFillImg;
+    public int hp = 100;
     float colorNum, hittedNum, GoalHitAlpha, decre;
     bool hitted;
     bool isDead;
@@ -70,6 +71,12 @@ public class PlayerScript : MonoBehaviour
             }
 
             HpSlider.value = (float)hp / 100;
+            if (hp <= 50)
+                HpFillImg.color = new Color(255, 255, 0, HpFillImg.color.a);
+            else if (hp <= 25)
+                HpFillImg.color = new Color(255, 0, 0, HpFillImg.color.a); 
+            else
+                HpFillImg.color = new Color(255, 255, 255, HpFillImg.color.a);
         }
     }
 
