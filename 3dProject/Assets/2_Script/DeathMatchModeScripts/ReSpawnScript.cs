@@ -12,11 +12,13 @@ public class ReSpawnScript : MonoBehaviour
     [SerializeField] GameObject WaveTitle;
     [SerializeField] Text WaveText;
     [SerializeField] Text WaveTextSmall;
+    [SerializeField] GameObject WaveSoundObj;
 
     GameObject GoZomPrefabs;
     GameObject GoSZomPrefabs;
     Transform[] RespawnPos;
     Vector3[] pos;
+    WaveSoundScript ZomScream;
 
     public float RespawnTime;
 
@@ -38,6 +40,7 @@ public class ReSpawnScript : MonoBehaviour
             RespawnPos[i] = RespawnLoca[i].GetComponent<Transform>();
         }
         pos = new Vector3[5];
+        ZomScream = WaveSoundObj.GetComponent<WaveSoundScript>();
     }
     void Start()
     {
@@ -73,7 +76,7 @@ public class ReSpawnScript : MonoBehaviour
             waveTerm += Time.deltaTime;
             if(waveTerm >= 5.0f / DoubleSpeed)
             {
-                
+                ZomScream.SoundsPlay();
                 WaveTitle.SetActive(true);
                 WaveText.text = (currentWave+1).ToString();
                 WaveTextSmall.text = (currentWave + 1).ToString();

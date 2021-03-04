@@ -62,24 +62,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2_Script\BloodParticleScript.cs" />
-    <Compile Include="Assets\2_Script\DifficultyHard.cs" />
-    <Compile Include="Assets\2_Script\FirstAidKit.cs" />
-    <Compile Include="Assets\2_Script\HittedUIScript.cs" />
-    <Compile Include="Assets\2_Script\IngameManager.cs" />
-    <Compile Include="Assets\2_Script\KnifeScript.cs" />
-    <Compile Include="Assets\2_Script\LobbyCameraMoving.cs" />
-    <Compile Include="Assets\2_Script\LobbyZombie.cs" />
-    <Compile Include="Assets\2_Script\PlayerScript.cs" />
-    <Compile Include="Assets\2_Script\RadioSpawnSpeed.cs" />
-    <Compile Include="Assets\2_Script\ReSpawnScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\BloodParticleScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\FirstAidKit.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\IngameManager.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\RadioSpawnSpeed.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ReSpawnScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\SpecialZombie_First.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\WaveSoundScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieSoundScripts.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\DifficultyHard.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\LobbyCameraMoving.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\LobbyZombie.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TDTextScore.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TitleScript.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TutorialText.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\HittedUIScript.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
-    <Compile Include="Assets\2_Script\SpecialZombie_First.cs" />
-    <Compile Include="Assets\2_Script\TDTextScore.cs" />
-    <Compile Include="Assets\2_Script\TitleScript.cs" />
-    <Compile Include="Assets\2_Script\TutorialText.cs" />
-    <Compile Include="Assets\2_Script\ZombieScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\TargetScript.cs" />

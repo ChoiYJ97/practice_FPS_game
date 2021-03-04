@@ -7,9 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    int Score;
+    bool quit, ingame;
+    int Score, HighScore;
     static int Hard;
     static SceneManagerScript _uniqueinstance;
+    public GameObject Quit;
+
     public static SceneManagerScript _instance
     {
         get { return _uniqueinstance; }
@@ -20,10 +23,13 @@ public class SceneManagerScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _uniqueinstance = this;
         Lobby_Game();
+        Quit.SetActive(false);
+        quit = false;
+        ingame = false;
     }
 
     void Start()
-    {
+    {     
         Score = 0;
         Hard = 0;
         Screen.SetResolution(1024, 768, true);
@@ -31,13 +37,31 @@ public class SceneManagerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!ingame)
         {
-            Exit_Game();
+            if (Input.GetKeyDown(KeyCode.Escape) && !quit)
+            {
+                timescaleControl();
+                Quit.SetActive(true);
+                quit = true;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Escape) && quit)
+            {
+                timescaleControl();
+                Quit.SetActive(false);
+                quit = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Return) && quit)
+            {
+                Exit_Game();
+            }
         }
     }
     public void Lobby_Game()
     {
+        ingame = false;
         SceneManager.LoadScene("LobbyScene");
     }
     public void Story_mode()
@@ -46,13 +70,17 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void DeathMatch_mode_Normal()
     {
+        ingame = true;
         Hard = 0;
+        Score = 0;
         Debug.Log("난이도 " + Hard);
         SceneManager.LoadScene("DeathMatchMode");
     }
     public void DeathMatch_mode_Hard()
     {
+        ingame = true;
         Hard = 1;
+        Score = 0;
         Debug.Log("난이도 " + Hard);
         SceneManager.LoadScene("DeathMatchMode");
     }
@@ -82,18 +110,31 @@ public class SceneManagerScript : MonoBehaviour
 
     public void Scoresave(int score)
     {
-        if (Score < score)
+        if (HighScore < score)
             Score = score;
         else
             return;
     }
     public int GetScore()
     {
-        return Score;
+        HighScore = Score;
+        return HighScore;
     }
 
     public int currDifficulty()
     {
          return Hard;
+    }
+    public void timescaleControl()
+    {
+        if (Time.timeScale == 1.0f)
+            Time.timeScale = 0.0f;
+        else if (Time.timeScale == 0.0f)
+            Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+    public void Bool_quit()
+    {
+        quit = !quit;
     }
 }
