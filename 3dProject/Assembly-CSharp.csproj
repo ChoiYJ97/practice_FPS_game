@@ -71,6 +71,7 @@
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\WaveSoundScript.cs" />
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieScript.cs" />
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieSoundScripts.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieWalkSound.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\DifficultyHard.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\LobbyCameraMoving.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\LobbyZombie.cs" />

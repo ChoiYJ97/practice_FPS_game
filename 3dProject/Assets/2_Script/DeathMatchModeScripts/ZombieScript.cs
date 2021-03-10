@@ -20,6 +20,9 @@ public class ZombieScript : MonoBehaviour
     [SerializeField] CapsuleCollider ArmL;
     [SerializeField] CapsuleCollider ArmR;
 
+    public AudioClip[] Scream;
+    AudioSource ZomScream;
+
     public enum aniState
     {
         IDLE    =0,
@@ -52,6 +55,7 @@ public class ZombieScript : MonoBehaviour
         aniZombie = gameObject.GetComponent<Animator>();
         Box = gameObject.GetComponent<BoxCollider>();
         diffculty = GameObject.Find("Scene_Manager").GetComponent<SceneManagerScript>();
+        ZomScream = gameObject.GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -64,6 +68,7 @@ public class ZombieScript : MonoBehaviour
         interval = true;
         isdead = false;
         currentDiff = SceneManagerScript._instance.currDifficulty();
+        ZomScream.volume = 0.5f;
     }
 
     void Update()
@@ -149,6 +154,7 @@ public class ZombieScript : MonoBehaviour
 
     public void Dead()
     {
+        soundControl(5);
         ZomSpeed(0);
         aniZombie.SetInteger("Anistate", (int)aniState.DEAD);
         ArmL.radius = 0;
@@ -170,10 +176,12 @@ public class ZombieScript : MonoBehaviour
             aniZombie.SetInteger("Anistate", (int)aniState.WALK_HANDDOWN);
         }
         ArmColliderIsNotTriggr();
+        soundControl(0);
     }
 
     public void Running()
     {
+        soundControl(0);
         ZomSpeed(RunSpeed);
         aniZombie.SetInteger("Anistate", (int)aniState.RUN);
         ArmColliderIsNotTriggr();
@@ -181,6 +189,7 @@ public class ZombieScript : MonoBehaviour
 
     public void Attack()
     {
+        soundControl(4);
         ZomSpeed(0.001f);
         aniZombie.SetInteger("Anistate", (int)aniState.ATTACK);
         ArmColliderIsTrigger();
@@ -188,6 +197,7 @@ public class ZombieScript : MonoBehaviour
 
     public void Idle()
     {
+        soundControl(0);
         ZomSpeed(0);
         aniZombie.SetInteger("Anistate", (int)aniState.IDLE);
         ArmColliderIsNotTriggr();
@@ -195,6 +205,32 @@ public class ZombieScript : MonoBehaviour
     public void ZomSpeed(float speed)
     {
         nvAgent.speed = speed;
+        nvAgent.destination = playerTransform.position;
+    }
+
+    int i = 0;
+    void soundControl(int curAni)
+    {
+        if (i != curAni && !ZomScream.isPlaying)
+        {
+            ZomScream.clip = Scream[2];
+            ZomScream.Pause();
+            i = curAni;
+        }
+        else
+            return;
+
+        if (!ZomScream.isPlaying && curAni == 4)
+        {
+            ZomScream.clip = Scream[0];
+            ZomScream.Play();
+        }
+
+        else if (curAni == 5)
+        {
+            ZomScream.clip = Scream[1];
+            ZomScream.Play();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -210,7 +246,6 @@ public class ZombieScript : MonoBehaviour
             if (!find)
                 find = true;
         }
-
     }
 
     public int Currenthp()
