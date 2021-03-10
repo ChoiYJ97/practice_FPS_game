@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Zombie
+  - Cutline
+  - Target
+  - Metal
+  - Road
+  - Knife
+  - ZombieArm
+  - Weapon
+  - SecondCamera
+  - BulletSpawn
+  - LevelPart
+  - Dummie
+  - SpecialZombie
+  - SZombieArm
   layers:
   - Default
   - TransparentFX
@@ -13,13 +28,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerCannotPass
+  - Zombie
+  - Player
+  - Knife
+  - Weapon
+  - PlayerMarker
+  - Minmap
   - 
   - 
   - 

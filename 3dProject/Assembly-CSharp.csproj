@@ -62,18 +62,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\TargetScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Bullet\BulletScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Casings_&amp;_Projectiles\CasingScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Casings_&amp;_Projectiles\GrenadeScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ExplosionScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ImpactScript.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\FPSController\FpsControllerLPFP.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
-    <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\BloodParticleScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\FirstAidKit.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\IngameManager.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\RadioSpawnSpeed.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ReSpawnScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\SpecialZombie_First.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\WaveSoundScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieScript.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieSoundScripts.cs" />
+    <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieWalkSound.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\DifficultyHard.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\LobbyCameraMoving.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\LobbyZombie.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TDTextScore.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TitleScript.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TutorialText.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\HittedUIScript.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\PlayerScript.cs" />
+    <Compile Include="Assets\2_Script\ResultScript.cs" />
+    <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\TargetScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Bullet\BulletScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Casings_&amp;_Projectiles\CasingScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Casings_&amp;_Projectiles\GrenadeScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ExplosionScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Explosions_&amp;_Impacts\ImpactScript.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\FPSController\FpsControllerLPFP.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
+    <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
+    <Compile Include="Assets\8_Font\Fonts\Script\scriptTexttest.cs" />
+    <Compile Include="Assets\BlackMetal UI\Demo_Assets\scripts\GUI_Demo.cs" />
+    <None Include="Assets\8_Font\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+    <None Include="Assets\5_Download\FreeMachineGun\Shader\BDCS.shader" />
+    <None Include="Assets\5_Download\FreeMachineGun\documentation.txt" />
+    <None Include="Assets\8_Font\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -94,6 +121,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/ChoiYJ/Documents/GitHub/practice_FPS_game/3dProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
