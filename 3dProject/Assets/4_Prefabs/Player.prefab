@@ -1588,6 +1588,7 @@ MonoBehaviour:
   HpSlider: {fileID: 4866915451112753578}
   HittedImpact: {fileID: 8431413763211614649}
   HpFillImg: {fileID: 1177360392412257787}
+  hp: 100
 --- !u!1 &3050412869457297591
 GameObject:
   m_ObjectHideFlags: 0
@@ -12880,7 +12881,8 @@ MonoBehaviour:
   fireRate: 11.5
   autoReload: 0
   autoReloadDelay: 0.25
-  ammo: 31
+  ammo: 30
+  totalAmmo: 120
   bulletForce: 400
   showBulletInMagDelay: 0.6
   bulletInMagRenderer: {fileID: 3151081353555434509}
@@ -12920,6 +12922,7 @@ MonoBehaviour:
       type: 3}
     aimSound: {fileID: 8300000, guid: acaebc89b98b82142bd2b24edb6081e4, type: 3}
   grenadeCountTxt: {fileID: 3161965117465415363}
+  grenadeCount: 3
 --- !u!82 &3130030852556581573
 AudioSource:
   m_ObjectHideFlags: 0

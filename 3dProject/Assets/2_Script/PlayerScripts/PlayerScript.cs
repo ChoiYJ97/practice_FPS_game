@@ -46,21 +46,22 @@ public class PlayerScript : MonoBehaviour
                 colorNum = 0;
             }
 
-            if (colorNum <= 255.0f)
-            {
-                colorNum += Time.deltaTime;
-                if (hp >= 70)
-                {
-                    //HpTxt.color = new Color(0.0f, colorNum, 0, 0.5901961f);
-                }
-                else if (hp < 70 && hp >= 40)
-                {
-                    //HpTxt.color = new Color(255.0f, colorNum, 0, 0.5901961f);
-                }
-                else
-                {
-                    //HpTxt.color = new Color(255.0f, colorNum / 2, 0, 0.5901961f);
-                }
+            {//if (colorNum <= 255.0f)
+             //{
+             //    colorNum += Time.deltaTime;
+             //    if (hp >= 70)
+             //    {
+             //        //HpTxt.color = new Color(0.0f, colorNum, 0, 0.5901961f);
+             //    }
+             //    else if (hp < 70 && hp >= 40)
+             //    {
+             //        //HpTxt.color = new Color(255.0f, colorNum, 0, 0.5901961f);
+             //    }
+             //    else
+             //    {
+             //        //HpTxt.color = new Color(255.0f, colorNum / 2, 0, 0.5901961f);
+             //    }
+             //}
             }
                     
             if (HittedImpact.color.a <= hittedNum && HittedImpact.color.a > 0)

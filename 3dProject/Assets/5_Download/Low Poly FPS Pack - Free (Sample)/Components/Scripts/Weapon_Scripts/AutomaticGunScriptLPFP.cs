@@ -67,9 +67,11 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 	//How much ammo is currently left
 	private int currentAmmo;
+    private int currentTotalAmmo;
 	//Totalt amount of ammo
 	[Tooltip("How much ammo the weapon should have.")]
 	public int ammo;
+    public int totalAmmo;
 	//Check if out of ammo
 	private bool outOfAmmo;
 
@@ -160,7 +162,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
     //수류탄 갯수
     public Text grenadeCountTxt;
-    int grenadeCount;
+    public int grenadeCount;
     //---------------------------------------------------------------------------
 
 
@@ -170,8 +172,9 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		//Set current ammo to total ammo value
 		currentAmmo = ammo;
+        currentTotalAmmo = totalAmmo;
 
-		muzzleflashLight.enabled = false;
+        muzzleflashLight.enabled = false;
 
         //수류탄 스크립트 초기화
         grenadeCount = 3;
@@ -184,7 +187,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 		//Get weapon name from string to text
 		//currentWeaponText.text = weaponName;
 		//Set total ammo text from total ammo int
-		totalAmmoText.text = ammo.ToString();
+		totalAmmoText.text = currentTotalAmmo.ToString();
 
 		//Weapon sway
 		initialSwayPosition = transform.localPosition;
@@ -298,6 +301,7 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 
 		//Set current ammo text from ammo int
 		currentAmmoText.text = currentAmmo.ToString ();
+        totalAmmoText.text = currentTotalAmmo.ToString();
 
 		//Continosuly check which animation 
 		//is currently playing
@@ -480,13 +484,13 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
             //}
         }
 
-		//Reload 수류탄도 같이 채워지게 조치해둠 이후 변경할 예정
-		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting) 
+		//Reload 수류탄도 같이 채워지게 조치해둠 이후 변경할 예정->총알박스에서 충전
+		if (Input.GetKeyDown (KeyCode.R) && !isReloading && !isInspecting && currentTotalAmmo != 0) 
 		{
 			//Reload
 			Reload ();
-            grenadeCount = 3;
-            grenadeCountTxt.text = grenadeCount.ToString() + "/3";
+            //grenadeCount = 3;
+            //grenadeCountTxt.text = grenadeCount.ToString() + "/3";
         }
 
         //Walking when pressing down WASD keys
@@ -550,10 +554,20 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 				//Start show bullet delay
 				StartCoroutine (ShowBulletInMag ());
 			}
-		} 
-		//Restore ammo when reloading
-		currentAmmo = ammo;
-		outOfAmmo = false;
+		}
+        //Restore ammo when reloading
+        if (currentTotalAmmo >= (ammo - currentAmmo))
+        {
+            currentTotalAmmo -= (ammo - currentAmmo);
+            currentAmmo = ammo;
+        }
+
+        else if (currentTotalAmmo < ammo)
+        {
+            currentAmmo += currentTotalAmmo;
+            currentTotalAmmo = 0;
+        }
+        outOfAmmo = false;
 	}
 
 	//Reload
@@ -593,9 +607,20 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 				<SkinnedMeshRenderer> ().enabled = true;
 			}
 		}
-		//Restore ammo when reloading
-		currentAmmo = ammo;
-		outOfAmmo = false;
+        //Restore ammo when reloading
+        if (currentTotalAmmo >= (ammo-currentAmmo))
+        {
+            currentTotalAmmo -= (ammo - currentAmmo);
+            currentAmmo = ammo;
+        }
+
+        else if (currentTotalAmmo < ammo)
+        {
+            currentAmmo += currentTotalAmmo;
+            currentTotalAmmo = 0;
+        }
+
+        outOfAmmo = false;
 	}
 
 	//Enable bullet in mag renderer after set amount of time
@@ -639,5 +664,10 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
 			isInspecting = false;
 		}
 	}
+
+    public void AmmoSupplement()
+    {
+        currentTotalAmmo = 150 - currentAmmo;
+    }
 }
 // ----- Low Poly FPS Pack Free Version -----
