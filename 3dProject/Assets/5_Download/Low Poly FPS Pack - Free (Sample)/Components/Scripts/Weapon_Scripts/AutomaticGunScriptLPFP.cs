@@ -669,5 +669,12 @@ public class AutomaticGunScriptLPFP : MonoBehaviour {
     {
         currentTotalAmmo = 150 - currentAmmo;
     }
+
+    public void GrenadeSupplement()
+    {
+        grenadeCount = 3;
+        grenadeCountTxt.text = grenadeCount.ToString() + "/3";
+    }
+
 }
 // ----- Low Poly FPS Pack Free Version -----

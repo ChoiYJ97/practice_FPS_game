@@ -104,4 +104,11 @@ public class PlayerScript_Tutorial : MonoBehaviour
         else
             Damage = 1;
     }
+
+    public void DamagedFromOthers(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+            hp = 0;
+    }
 }

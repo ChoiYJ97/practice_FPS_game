@@ -86,6 +86,14 @@ public class BulletScript : MonoBehaviour {
                 Quaternion.LookRotation(collision.contacts[0].normal));
             Destroy(gameObject);
         }
+        //좀비 헤드 샷
+        if (collision.transform.tag == "ZombieHead")
+        {
+            Instantiate(bloodPar[Random.Range
+                (0, bloodPar.Length)], _trans.position,
+                Quaternion.LookRotation(collision.contacts[0].normal));
+            Destroy(gameObject);
+        }
 
         //스페셜 좀비
         if (collision.transform.tag == "SpecialZombie")

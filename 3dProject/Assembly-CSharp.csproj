@@ -86,10 +86,13 @@
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AmmoTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AutomaticGunScriptLPFP_Tutorial.cs" />
+    <Compile Include="Assets\2_Script\TutorialScripts\KnifeScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\MeditTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\PlayerScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\RadioTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\TutorialScript.cs" />
+    <Compile Include="Assets\2_Script\TutorialScripts\ZombieHead.cs" />
+    <Compile Include="Assets\2_Script\TutorialScripts\ZombieScript_Tutorial.cs" />
     <Compile Include="Assets\5_Download\BlackMetal UI\Demo_Assets\scripts\GUI_Demo.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\DebrisScript.cs" />
     <Compile Include="Assets\5_Download\Low Poly FPS Pack - Free (Sample)\Components\Demo_Scene_Components\Scripts\ExplosiveBarrelScript.cs" />
