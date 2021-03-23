@@ -5,7 +5,7 @@ using UnityEngine;
 public class RadioTutorial : MonoBehaviour
 {
     public GameObject pressEkey;
-    public GameObject SpeedUPIcon;
+    //public GameObject SpeedUPIcon;
 
     public Transform Radio;
     public Transform playerTrans;
@@ -17,7 +17,7 @@ public class RadioTutorial : MonoBehaviour
     {
         Dis = Vector3.Distance(playerTrans.position, Radio.position);
         pressEkey.SetActive(false);
-        SpeedUPIcon.SetActive(false);
+        //SpeedUPIcon.SetActive(false);
         acted = false;
 
     }
@@ -39,12 +39,12 @@ public class RadioTutorial : MonoBehaviour
             {
                 if (!acted)
                 {
-                    SpeedUPIcon.SetActive(true);
+                    //SpeedUPIcon.SetActive(true);
                     acted = true;
                 }
                 else if (acted)
                 {
-                    SpeedUPIcon.SetActive(false);
+                    //SpeedUPIcon.SetActive(false);
                     acted = false;
                 }
             }

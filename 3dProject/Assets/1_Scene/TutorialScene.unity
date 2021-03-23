@@ -298,7 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressEkey: {fileID: 1154299170}
-  SpeedUPIcon: {fileID: 1141056305}
   Radio: {fileID: 1154299171}
   playerTrans: {fileID: 1143811504}
 --- !u!1001 &634197566
@@ -741,12 +740,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1117570637}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1141056305 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5643205453972482311, guid: 791a872a14b8d914bb453c56fbf15955,
-    type: 3}
-  m_PrefabInstance: {fileID: 1154299169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1143811498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4092184078048458958, guid: 9f9a4241ea8e2df418a07b0ff98bf55d,
@@ -1125,6 +1118,16 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1143811498}
+    - target: {fileID: 5519328108498165508, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: Player_Tut
+      value: 
+      objectReference: {fileID: 1143811499}
+    - target: {fileID: 5519328108498165508, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: Player_AutoScript_tut
+      value: 
+      objectReference: {fileID: 2131249117}
     - target: {fileID: 5519328108498165509, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1184,6 +1187,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4918749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1149998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 173.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519328110370906380, guid: 2e8b19ae84e21044382bf3d9e8c0fc97,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -348.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8b19ae84e21044382bf3d9e8c0fc97, type: 3}

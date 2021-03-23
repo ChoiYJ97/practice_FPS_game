@@ -25,6 +25,8 @@ public class ZombieSoundScripts : MonoBehaviour
             int i = Random.Range(0, 1);
             ZomScream.clip = Scream[i];
             ZomScream.Play();
+            if (Vector3.Distance(other.transform.position, playerTrans.position) > 5.0f)
+                ZomScream.Pause();
         }
     }
 

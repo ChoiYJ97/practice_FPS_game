@@ -13,7 +13,6 @@ public class ZombieScript_Tutorial : MonoBehaviour
     Transform playerTrans;
 
     //Transform FirstDesti;
-    GameObject go;
     NavMeshAgent nvAgent;
     BoxCollider Box;
 
@@ -21,7 +20,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
     [SerializeField] CapsuleCollider ArmL;
     [SerializeField] CapsuleCollider ArmR;
 
-    public TutorialScript tut;
+    TutorialScript tut;
 
     public AudioClip[] Scream;
     AudioSource ZomScream;
@@ -40,7 +39,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
 
     float distance;
     float timecheck = 0;
-    float WalkSpeed, RunSpeed;
+    float WalkSpeed = 3.0f, RunSpeed = 5.0f;
     bool find;
     bool hitted;
     bool interval;
@@ -49,9 +48,9 @@ public class ZombieScript_Tutorial : MonoBehaviour
 
     void Awake()
     {
+        tut = GameObject.Find("TutorialManager").GetComponent<TutorialScript>();
         _trans = gameObject.GetComponent<Transform>();
         playerTrans = GameObject.Find("Player_Tutorial").GetComponent<Transform>();
-        go = GameObject.Find("FirstDestination");
         //FirstDesti = go.GetComponent<Transform>();
         nvAgent = gameObject.GetComponent<NavMeshAgent>();
         aniZombie = gameObject.GetComponent<Animator>();
@@ -63,7 +62,6 @@ public class ZombieScript_Tutorial : MonoBehaviour
         ArmL.isTrigger = false;
         ArmR.isTrigger = false;
         distance = Vector3.Distance(playerTrans.position, _trans.position);
-        start = false;
         find = false;
         hitted = false;
         interval = true;
@@ -73,15 +71,8 @@ public class ZombieScript_Tutorial : MonoBehaviour
 
     void Update()
     {
-
-        if (!start)
-        {
-            start = true;
-        }
-
         if (Hp <= 0)
         {
-            tut.ZombieKilled_Tut();
             if (!isdead)
             {
                 isdead = true;
@@ -92,6 +83,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
             Dead();
             if (timecheck >= 2.5f)
             {
+                tut.ZombieKilled_Tut();
                 Destroy(gameObject);
                 timecheck = 0;
             }

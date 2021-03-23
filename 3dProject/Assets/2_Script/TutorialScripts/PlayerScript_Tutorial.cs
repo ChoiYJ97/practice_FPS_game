@@ -92,7 +92,7 @@ public class PlayerScript_Tutorial : MonoBehaviour
     public void Isdead()
     {
         isDead = true;
-        IngameManager._instance.CheckLife();
+        //IngameManager._instance.CheckLife();
     }
 
     public void HardorNot()
