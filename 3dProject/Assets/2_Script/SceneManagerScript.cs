@@ -10,8 +10,21 @@ public class SceneManagerScript : MonoBehaviour
     bool quit, ingame;
     int Score, HighScore;
     static int Hard;
+
     static SceneManagerScript _uniqueinstance;
+
     public GameObject Quit;
+
+    [Header("Texts")]
+    public GameObject Text_Tut;
+    public GameObject Text_Quit;
+    public GameObject Text_Mission;
+
+    static int curMode; 
+    // 0 = startEmptyScene
+    // 1 = Lobby
+    // 2 = Tutorial
+    // 3 = DeathMatchMode
 
     public static SceneManagerScript _instance
     {
@@ -32,17 +45,26 @@ public class SceneManagerScript : MonoBehaviour
     {     
         Score = 0;
         Hard = 0;
+        curMode = 1;
         Screen.SetResolution(1024, 768, true);
     }
 
     void Update()
     {
+        if(curMode == 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 1.0f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
         if (!ingame)
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !quit)
             {
                 timescaleControl();
                 Quit.SetActive(true);
+                QuitWindTextControl();
                 quit = true;
             }
 
@@ -50,18 +72,25 @@ public class SceneManagerScript : MonoBehaviour
             {
                 timescaleControl();
                 Quit.SetActive(false);
+                QuitWindTextControl();
                 quit = false;
             }
 
             else if (Input.GetKeyDown(KeyCode.Return) && quit)
             {
-                Exit_Game();
+                QuitWindTextControl();
+                Quit.SetActive(false);
+                if (curMode == 2 || curMode == 3)
+                    Lobby_Game();
+                else if (curMode == 1)
+                    Exit_Game(); 
             }
         }
     }
     public void Lobby_Game()
     {
         ingame = false;
+        curMode = 1;
         SceneManager.LoadScene("LobbyScene");
     }
     public void Story_mode()
@@ -74,6 +103,7 @@ public class SceneManagerScript : MonoBehaviour
         Hard = 0;
         Score = 0;
         Debug.Log("난이도 " + Hard);
+        curMode = 3;
         SceneManager.LoadScene("DeathMatchMode");
     }
     public void DeathMatch_mode_Hard()
@@ -82,6 +112,7 @@ public class SceneManagerScript : MonoBehaviour
         Hard = 1;
         Score = 0;
         Debug.Log("난이도 " + Hard);
+        curMode = 3;
         SceneManager.LoadScene("DeathMatchMode");
     }
     public void RestartDeathMatchMode()
@@ -90,6 +121,7 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void Tutorial_mode()
     {
+        curMode = 2;
         SceneManager.LoadScene("TutorialScene");
     }
     public void Result_Scene()
@@ -136,5 +168,27 @@ public class SceneManagerScript : MonoBehaviour
     public void Bool_quit()
     {
         quit = !quit;
+    }
+
+    public void QuitWindTextControl()
+    {
+        Text_Quit.SetActive(false);
+        Text_Mission.SetActive(false);
+        Text_Tut.SetActive(false);
+        switch (curMode)
+        {
+            case 0:
+                break;
+            case 1:
+                Text_Quit.SetActive(true);
+                break;
+            case 2:
+                Text_Tut.SetActive(true);
+                break;
+            case 3:
+                Text_Mission.SetActive(true);
+                break;
+
+        }
     }
 }

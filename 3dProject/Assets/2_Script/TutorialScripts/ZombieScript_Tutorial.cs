@@ -42,7 +42,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
     float WalkSpeed = 3.0f, RunSpeed = 5.0f;
     bool find;
     bool hitted;
-    bool interval;
+    //bool interval;
     bool isdead;
     bool start;
 
@@ -64,7 +64,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
         distance = Vector3.Distance(playerTrans.position, _trans.position);
         find = false;
         hitted = false;
-        interval = true;
+        //interval = true;
         isdead = false;
         ZomScream.volume = 0.5f;
     }
@@ -90,7 +90,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
             return;
         }
 
-        if (interval)
+        //if (interval)
         {
             distance = Vector3.Distance(playerTrans.position, _trans.position);
 
@@ -225,8 +225,9 @@ public class ZombieScript_Tutorial : MonoBehaviour
         if (Hp <= 0)
             return;
 
-        if (other.transform.tag == "Bullet" && !interval)
+        if (other.transform.tag == "Bullet" /*&& !interval*/)
         {
+            Debug.Log("body shoot");
             hitted = true;
             HpChange(1);
             if (!find)
@@ -242,9 +243,9 @@ public class ZombieScript_Tutorial : MonoBehaviour
     {
         Hp -= hp;
     }
-    public  bool isinterval()
+    public bool isinterval()
     {
-        return interval;
+        return false;
     }
 
     void ArmColliderIsTrigger()

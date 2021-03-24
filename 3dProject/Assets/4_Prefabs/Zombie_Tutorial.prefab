@@ -622,7 +622,6 @@ MonoBehaviour:
   Hp: 10
   ArmL: {fileID: 7711184621443340853}
   ArmR: {fileID: 3664803707980012271}
-  tut: {fileID: 5519328108498165508, guid: 2e8b19ae84e21044382bf3d9e8c0fc97, type: 3}
   Scream:
   - {fileID: 8300000, guid: b5dbd1bbcc3d51641b9a9a9eb9618589, type: 3}
   - {fileID: 8300000, guid: 3067a916cce6c4549bbc0043b28480a4, type: 3}
@@ -1486,8 +1485,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.28475332, y: 0.25, z: 0.20861}
-  m_Center: {x: -0.10237666, y: 0.030000009, z: -0.0042411205}
+  m_Size: {x: 0.28475332, y: 0.2969818, z: 0.28490072}
+  m_Center: {x: -0.10237667, y: 0.040544607, z: -0.008141709}
 --- !u!1 &4534190138899522291
 GameObject:
   m_ObjectHideFlags: 0

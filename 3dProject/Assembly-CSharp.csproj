@@ -86,6 +86,7 @@
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AmmoTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AutomaticGunScriptLPFP_Tutorial.cs" />
+    <Compile Include="Assets\2_Script\TutorialScripts\IconScript.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\KnifeScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\MeditTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\PlayerScript_Tutorial.cs" />

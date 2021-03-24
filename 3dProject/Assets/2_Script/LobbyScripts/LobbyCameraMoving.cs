@@ -117,6 +117,9 @@ public class LobbyCameraMoving : MonoBehaviour
         }
         else
             HighScoreText.SetActive(false);
+
+        if (currentLocation == location.TutorialL)
+            nvAgent.speed = 10;
     }
 
     public void MoveLocation(int index)
