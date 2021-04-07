@@ -185,8 +185,8 @@ public class SpecialZombie_First : MonoBehaviour
     {
         currentDiff = SceneManagerScript._instance.currDifficulty();
         if (currentDiff == 1)
-        { MaxHp = 150; WalkSpeed = 2.0f; score = 200; }
+        { MaxHp = 150; WalkSpeed = 2.5f; score = 200; }
         else
-        { MaxHp = 100; WalkSpeed = 1.5f; score = 500; }
+        { MaxHp = 70; WalkSpeed = 2.0f; score = 500; }
     }
 }

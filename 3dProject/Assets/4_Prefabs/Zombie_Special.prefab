@@ -566,9 +566,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8421446516883673638}
+  - component: {fileID: 6921357499999532556}
+  - component: {fileID: 5618409028563683947}
+  - component: {fileID: 1277152327311151765}
   m_Layer: 0
   m_Name: Base HumanHead
-  m_TagString: Untagged
+  m_TagString: ZombieHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,6 +595,48 @@ Transform:
   m_Father: {fileID: 9172763648290013272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6921357499999532556
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082994745863948387}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5618409028563683947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082994745863948387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51, y: 0.28823844, z: 0.27214015}
+  m_Center: {x: -0.09, y: 0.04076702, z: 0.004087699}
+--- !u!114 &1277152327311151765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082994745863948387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a425c5614b4bae4468b80457e12b5547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Zom: {fileID: 3064754732020578028}
 --- !u!1 &2092855515001964260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1357,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.06, y: 1.74, z: 0.69}
+  m_Size: {x: 1.06, y: 1.56, z: 0.69}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8934228909818786015
 NavMeshAgent:
@@ -1332,7 +1377,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.15
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

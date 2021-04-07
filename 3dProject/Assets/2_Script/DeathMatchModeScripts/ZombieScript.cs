@@ -274,16 +274,16 @@ public class ZombieScript : MonoBehaviour
 
     void HardMode()
     {
-        Hp = 20;
-        WalkSpeed = 2.0f;
-        RunSpeed = 4.0f;
+        Hp = 12;
+        WalkSpeed = 3.0f;
+        RunSpeed = 4.5f;
         score = 40;
     }
 
     void NormalMode()
     {
-        Hp = 10;
-        WalkSpeed = 1.5f;
+        Hp = 5;
+        WalkSpeed = 2.0f;
         RunSpeed = 3.5f;
         score = 20;
     }

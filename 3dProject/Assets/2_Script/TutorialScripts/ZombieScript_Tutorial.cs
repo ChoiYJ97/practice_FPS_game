@@ -24,6 +24,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
 
     public AudioClip[] Scream;
     AudioSource ZomScream;
+    ZombieSoundScripts ZomSoundScript;
 
     public enum aniState
     {
@@ -56,6 +57,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
         aniZombie = gameObject.GetComponent<Animator>();
         Box = gameObject.GetComponent<BoxCollider>();
         ZomScream = gameObject.GetComponent<AudioSource>();
+        ZomSoundScript = GameObject.Find("SoundColliderGO").GetComponent<ZombieSoundScripts>();
     }
     void Start()
     {
@@ -83,6 +85,7 @@ public class ZombieScript_Tutorial : MonoBehaviour
             Dead();
             if (timecheck >= 2.5f)
             {
+                ZomSoundScript.ZombieDied();
                 tut.ZombieKilled_Tut();
                 Destroy(gameObject);
                 timecheck = 0;

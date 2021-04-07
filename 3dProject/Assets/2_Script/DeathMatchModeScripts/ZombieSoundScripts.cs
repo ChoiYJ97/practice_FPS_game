@@ -39,4 +39,9 @@ public class ZombieSoundScripts : MonoBehaviour
         }
     }
 
+    public void ZombieDied()
+    {
+        ZomScream.Pause();
+    }
+
 }
