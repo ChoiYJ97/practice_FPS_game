@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Image HittedImpact;
     public Image HpFillImg;
     public int hp = 100;
-    float colorNum, hittedNum, GoalHitAlpha, decre;
+    float hittedNum, GoalHitAlpha, decre;
     bool hitted;
     bool isDead;
     int currentDiff;
@@ -18,7 +18,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        colorNum = 0;
+       
         hittedNum = 0.4901961f;
         GoalHitAlpha = 0.0f;
         decre = 0.0f;
@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour
             if (hitted)
             {
                 hitted = false;
-                colorNum = 0;
+                
             }
 
             {//if (colorNum <= 255.0f)

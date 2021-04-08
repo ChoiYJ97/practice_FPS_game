@@ -54,8 +54,8 @@ public class ReSpawnScript : MonoBehaviour
         countSSpawned = 0;
         waveTerm = 0;
         currentWave = IngameManager._instance.CurrentWave();
-        Debug.Log("현재 웨이브 " + currentWave);
-        Debug.Log(IngameManager._instance.CurrentWave());
+        //Debug.Log("현재 웨이브 " + currentWave);
+        //Debug.Log(IngameManager._instance.CurrentWave());
         WaveTitle.SetActive(true);
         SpeedUp = false;
     }
@@ -88,7 +88,7 @@ public class ReSpawnScript : MonoBehaviour
                 countNSpawned = 0;
                 currentWave++;
                 waveTerm = 0;
-                Debug.Log("현재 웨이브 " + currentWave);
+                //Debug.Log("현재 웨이브 " + currentWave);
             }
         }
         
@@ -123,7 +123,7 @@ public class ReSpawnScript : MonoBehaviour
             countNSpawned++;
             GoZomPrefabs = Instantiate(Zombie);
             Zombie.transform.position = pos[i];
-            Debug.Log("노멀좀비 스폰 " + countNSpawned);
+            //Debug.Log("노멀좀비 스폰 " + countNSpawned);
         }
     }
 
@@ -135,7 +135,7 @@ public class ReSpawnScript : MonoBehaviour
         countSSpawned++;
         GoSZomPrefabs = Instantiate(SpecialZombie);
         SpecialZombie.transform.position = pos[4];
-        Debug.Log("특수좀비 스폰 " + countSSpawned);
+        //Debug.Log("특수좀비 스폰 " + countSSpawned);
     }
 
     public void HardOrNot()

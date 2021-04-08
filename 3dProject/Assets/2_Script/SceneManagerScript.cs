@@ -101,8 +101,6 @@ public class SceneManagerScript : MonoBehaviour
     {
         ingame = true;
         Hard = 0;
-        Score = 0;
-        Debug.Log("난이도 " + Hard);
         curMode = 3;
         SceneManager.LoadScene("DeathMatchMode");
     }
@@ -110,8 +108,6 @@ public class SceneManagerScript : MonoBehaviour
     {
         ingame = true;
         Hard = 1;
-        Score = 0;
-        Debug.Log("난이도 " + Hard);
         curMode = 3;
         SceneManager.LoadScene("DeathMatchMode");
     }
@@ -142,15 +138,22 @@ public class SceneManagerScript : MonoBehaviour
 
     public void Scoresave(int score)
     {
-        if (HighScore < score)
-            Score = score;
-        else
-            return;
+        Score = score;
+    }
+    public int GetHighScore()
+    {
+        if(HighScore < Score)
+            HighScore = Score;
+
+        return HighScore;
     }
     public int GetScore()
     {
-        HighScore = Score;
-        return HighScore;
+        return Score;
+    }
+    public void ScoreReset()
+    {
+        Score = 0;
     }
 
     public int currDifficulty()

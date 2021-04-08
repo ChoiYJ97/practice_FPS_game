@@ -89,7 +89,7 @@ public class TutorialScript : MonoBehaviour
     float disP_A, disP_M, disP_R;
 
     bool keyCheck, keyW, keyA, keyS, keyD, NextKey,qfKeyCheck;
-    bool killedAll, AmmoCheck, MedickitCheck, RadioCheck;
+    bool killedAll, AmmoCheck, RadioCheck;
 
     void Start()
     {
@@ -109,7 +109,6 @@ public class TutorialScript : MonoBehaviour
         qfKeyCheck = false;
         killedAll = false;
         AmmoCheck = false;
-        MedickitCheck = false;
         RadioCheck = false;
 
         disP_A = 0;

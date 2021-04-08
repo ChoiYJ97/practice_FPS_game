@@ -25,7 +25,7 @@ public class SignBroadScript : MonoBehaviour
 
     Material[] materials;
 
-    float GMTextYposmax = 3.76f;
+    //float GMTextYposmax = 3.76f;
     float dis, timecheck;
     bool active, Selected;
     void Start()

@@ -48,6 +48,7 @@ public class IngameManager : MonoBehaviour
         YouDiedTxt.SetActive(false);
         killedNZ = 0;
         killedSZ = 0;
+        SceneManagerScript._instance.ScoreReset();
     }
 
     void Update()

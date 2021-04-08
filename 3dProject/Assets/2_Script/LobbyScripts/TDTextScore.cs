@@ -18,7 +18,7 @@ public class TDTextScore : MonoBehaviour
     {
         if (SceneManagerScript._instance != null)
         {
-            Score = SceneManagerScript._instance.GetScore();
+            Score = SceneManagerScript._instance.GetHighScore();
             Tm.text = Score.ToString();
         }
     }
