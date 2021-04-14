@@ -120,7 +120,7 @@
     <Compile Include="Assets\Flooded_Grounds\Scripts\WaterFloat.cs" />
     <None Include="Assets\8_Font\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\8_Font\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Military Vehicle\Humvee Info.txt" />
+    <None Include="Assets\5_Download\Military Vehicle\Humvee Info.txt" />
     <None Include="Assets\8_Font\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\8_Font\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
     <None Include="Assets\5_Download\FreeMachineGun\Shader\BDCS.shader" />
