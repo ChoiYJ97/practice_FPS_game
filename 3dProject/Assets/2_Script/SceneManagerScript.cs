@@ -95,6 +95,8 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void Story_mode()
     {
+        ingame = true;
+        curMode = 3;
         SceneManager.LoadScene("StoryMode");
     }
     public void DeathMatch_mode_Normal()
@@ -191,7 +193,6 @@ public class SceneManagerScript : MonoBehaviour
             case 3:
                 Text_Mission.SetActive(true);
                 break;
-
         }
     }
 }

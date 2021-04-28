@@ -88,7 +88,12 @@
     <Compile Include="Assets\2_Script\PlayerScripts\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\AmmoBox_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\AutomaticGunScriptLPFP_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\CarNavigation.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\GrenadeBox_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\Medickit_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\PlayerScript_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\SoliderShootSoundScript.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StartPointZombieSound.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StoryModeScript.cs" />

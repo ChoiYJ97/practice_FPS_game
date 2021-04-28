@@ -24,9 +24,13 @@ public class SoliderShootSoundScript : MonoBehaviour
         if (stop >= 3)
         {
             Audio.clip = none;
+            ResetSound();
             return;
         }
-
+        SoundControl();
+    }
+    public void SoundControl()
+    {
         timecheck += Time.deltaTime;
         if (timecheck > 10.0f && !PlayStart)
         {
@@ -34,7 +38,7 @@ public class SoliderShootSoundScript : MonoBehaviour
             timecheck = 0;
         }
 
-        if(playtime <= timecheck && PlayStart)
+        if (playtime <= timecheck && PlayStart)
         {
             Audio.clip = clip;
             Audio.Play();
