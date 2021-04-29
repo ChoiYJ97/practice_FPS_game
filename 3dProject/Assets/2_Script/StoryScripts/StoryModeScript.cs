@@ -14,7 +14,8 @@ public class StoryModeScript : MonoBehaviour
     }
 
     [Header("Chapter Starting Position")]
-    public Transform[] StartPos; // 0 - Sewer, 1 - Factory, 2 - Labs
+    public Transform StartPos; // 스타트 맵 하수구 뚜껑 위치
+    public Transform SewerPos; // 하수구 안 시작 포지션
 
     [Header("StartPointUI")]
     public GameObject StartCanvas;
@@ -45,7 +46,8 @@ public class StoryModeScript : MonoBehaviour
     public Text Start_QuestTxt;
     public Transform[] NPCs;
     public GameObject[] Icons;
-    public GameObject Ekey;
+    public GameObject StartMapEkey;
+    public GameObject SewerMapEkey;
     string[] questtxt = 
         {
                         "어서오게, 중사여!\n이번 임무에 자원해줘서 고맙다.                        <Enter>",
@@ -63,8 +65,8 @@ public class StoryModeScript : MonoBehaviour
 
 
 
-    bool start;
-    float distance;
+    bool start, inSewer;
+    float distance, SewerEntDis;
     int startQuestInteger;
 
     private void Awake()
@@ -78,11 +80,13 @@ public class StoryModeScript : MonoBehaviour
         BlackOutImg.color = new Color(0, 0, 0, 1.0f);
         getsetTime = 2.0f;
         distance = 0;
+        SewerEntDis = 0;
         startQuestInteger = 0;
         start = false;
-
+        inSewer = false;
         StartCanvas.SetActive(false);
-        Ekey.SetActive(false);
+        StartMapEkey.SetActive(false);
+        SewerMapEkey.SetActive(false);
     }
 
     void Update()
@@ -90,7 +94,10 @@ public class StoryModeScript : MonoBehaviour
         if(!start)
             BlackOutControl(1);
 
-        UpdateStartQuest();
+        if(!inSewer)
+            UpdateStartQuest();
+
+        EnterSewer();
     }
 
     public void UpdateStartQuest()
@@ -111,13 +118,33 @@ public class StoryModeScript : MonoBehaviour
             StartCanvas.SetActive(false);
         }
     }
-
     public void StartQuestTextControl(int i)
     {
         if (i == 10)
             Start_QuestTxt.alignment = TextAnchor.MiddleCenter;
         Start_QuestTxt.text = questtxt[i];
     }
+
+    public void EnterSewer()
+    {
+        SewerEntDis = Vector3.Distance(playerTrans.position, StartPos.position);
+        if (SewerEntDis <= 3.0f)
+        {
+            StartMapEkey.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                inSewer = true;
+                StartCoroutine(TranslateDelay());
+            }
+        }
+    }
+
+    private IEnumerator TranslateDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        playerTrans.position = new Vector3(SewerPos.position.x, SewerPos.position.y, SewerPos.position.z);
+    }
+
 
     public void BlackOutControl(int i) // 0 = 켜짐 , 1 = 꺼짐
     {
