@@ -77,6 +77,7 @@
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieScript.cs" />
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieSoundScripts.cs" />
     <Compile Include="Assets\2_Script\DeathMatchModeScripts\ZombieWalkSound.cs" />
+    <Compile Include="Assets\2_Script\IconScript.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\DifficultyHard.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\LobbyCameraMoving.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\LobbyZombie.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\2_Script\PlayerScripts\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\AllLightControls.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\AmmoBox_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\AutomaticGunScriptLPFP_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\CarNavigation.cs" />
@@ -97,10 +99,10 @@
     <Compile Include="Assets\2_Script\StoryScripts\SoliderShootSoundScript.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StartPointZombieSound.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StoryModeScript.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\ZombieTrap.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AmmoTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AutomaticGunScriptLPFP_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\GrenadeBox_Tutorial.cs" />
-    <Compile Include="Assets\2_Script\TutorialScripts\IconScript.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\KnifeScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\MeditTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\PlayerScript_Tutorial.cs" />

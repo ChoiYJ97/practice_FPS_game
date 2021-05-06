@@ -143,6 +143,7 @@ public class StoryModeScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         playerTrans.position = new Vector3(SewerPos.position.x, SewerPos.position.y, SewerPos.position.z);
+        AllLightControls._instance.StartMapLightsControl(0);
     }
 
 
