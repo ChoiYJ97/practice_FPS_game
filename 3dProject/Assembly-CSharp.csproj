@@ -86,6 +86,8 @@
     <Compile Include="Assets\2_Script\LobbyScripts\TitleScript.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\TutorialTextScript.cs" />
     <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript_Story.cs" />
+    <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\PlayerScripts\PlayerScript.cs" />
     <Compile Include="Assets\2_Script\ResultScript.cs" />
     <Compile Include="Assets\2_Script\SceneManagerScript.cs" />
@@ -96,14 +98,16 @@
     <Compile Include="Assets\2_Script\StoryScripts\GrenadeBox_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\Medickit_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\PlayerScript_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\SZombieScript_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\SoliderShootSoundScript.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StartPointZombieSound.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\StoryModeScript.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\ZombieHeadScript_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\ZombieScript_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\ZombieTrap.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AmmoTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\AutomaticGunScriptLPFP_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\GrenadeBox_Tutorial.cs" />
-    <Compile Include="Assets\2_Script\TutorialScripts\KnifeScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\MeditTutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\PlayerScript_Tutorial.cs" />
     <Compile Include="Assets\2_Script\TutorialScripts\RadioTutorial.cs" />

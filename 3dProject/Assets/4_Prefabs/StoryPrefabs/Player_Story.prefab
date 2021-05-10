@@ -1713,7 +1713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7348049238098386589}
   - component: {fileID: 5120336534424923569}
-  - component: {fileID: 3112491950060363436}
+  - component: {fileID: 630812762306625310}
   m_Layer: 11
   m_Name: knife
   m_TagString: Knife
@@ -1749,7 +1749,7 @@ CapsuleCollider:
   m_Height: 0.52
   m_Direction: 1
   m_Center: {x: 0, y: -0.12, z: 0}
---- !u!114 &3112491950060363436
+--- !u!114 &630812762306625310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7345809507864245309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70ed7a112dff0c345bf0d2691c436373, type: 3}
+  m_Script: {fileID: 11500000, guid: f1f213a8e5c3e7549a6171c8901798b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bloodPar:
