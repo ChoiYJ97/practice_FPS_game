@@ -6,6 +6,7 @@ public class ZombieTrap : MonoBehaviour
 {
     public GameObject ZomPrefabs;
     public Transform Spawner;
+    public float timer;
     //public GameObject Self;
     bool connect;
     bool Spawned;
@@ -23,7 +24,7 @@ public class ZombieTrap : MonoBehaviour
         if(connect)
         {
             timecheck += Time.deltaTime;
-            if(timecheck >= 3.0f && !Spawned)
+            if(timecheck >= timer && !Spawned)
             {
                 StartCoroutine(SpawnAndDestory());
                 Spawned = true;

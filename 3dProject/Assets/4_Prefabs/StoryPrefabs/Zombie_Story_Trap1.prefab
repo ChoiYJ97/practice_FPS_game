@@ -1243,6 +1243,7 @@ MonoBehaviour:
   ZomPrefabs: {fileID: 4002861412542464552, guid: 5d561dc3cce92a6409fb9c05899a5b04,
     type: 3}
   Spawner: {fileID: 8976870932014233946}
+  timer: 3
 --- !u!65 &2652880169516051630
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -614,7 +614,10 @@ public class AutomaticGunScriptLPFP_Story : MonoBehaviour
 
     public void AmmoSupplement()
     {
-        currentTotalAmmo = 150 - currentAmmo;
+        if (currentTotalAmmo <= 450)
+            currentTotalAmmo += 150;
+        else if (currentTotalAmmo > 450)
+            currentTotalAmmo = 600 - currentAmmo;
     }
 
     public void GrenadeSupplement()

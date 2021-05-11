@@ -9,11 +9,12 @@ public class PlayerScript_Story : MonoBehaviour
     public Slider HpSlider;
     public Image HittedImpact;
     public Image HpFillImg;
+    public Transform[] revivePos;
     public int hp = 100;
     float hittedNum, GoalHitAlpha, decre;
     bool hitted;
     bool isDead;
-    int currentDiff;
+    bool canRevive;
     int Damage;
 
     void Start()
@@ -21,19 +22,29 @@ public class PlayerScript_Story : MonoBehaviour
         hittedNum = 0.4901961f;
         GoalHitAlpha = 0.0f;
         decre = 0.0f;
+        Damage = 2;
         hitted = false;
         isDead = false;
+        canRevive = false;
         HittedImpact.color = new Color(HittedImpact.color.r,
                 HittedImpact.color.g, HittedImpact.color.b, GoalHitAlpha);
     }
 
     void Update()
     {
-        HardorNot();
+        if(canRevive && Input.anyKeyDown)
+        {
+            hp = 100;
+            gameObject.transform.position = revivePos[0].position;
+            canRevive = false;
+            isDead = false;
+        }
 
         if (hp <= 0)
         {
+            StoryModeScript._instance.BlackOutControl(0);
             Isdead();
+            StartCoroutine(Revive());
             return;
         }
 
@@ -90,17 +101,6 @@ public class PlayerScript_Story : MonoBehaviour
     public void Isdead()
     {
         isDead = true;
-        //IngameManager._instance.CheckLife();
-    }
-
-    public void HardorNot()
-    {
-        //currentDiff = SceneManagerScript._instance.currDifficulty();
-        currentDiff = 1;
-        if (currentDiff == 1)
-            Damage = 5;
-        else
-            Damage = 1;
     }
 
     public void DamagedFromOthers(int damage)
@@ -108,5 +108,11 @@ public class PlayerScript_Story : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
             hp = 0;
+    }
+
+    IEnumerator Revive()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canRevive = true;
     }
 }

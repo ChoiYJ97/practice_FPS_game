@@ -55,7 +55,8 @@ public class ZombieScript_Story : MonoBehaviour
         distance = Vector3.Distance(playerTransform.position, _trans.position);
         start = false;
         find = false;
-        hitted = false;
+        hitted = true;
+        //hitted = false;
         isdead = false;
         ZomScream.volume = 0.5f;
     }
@@ -90,7 +91,7 @@ public class ZombieScript_Story : MonoBehaviour
         {
             distance = Vector3.Distance(playerTransform.position, _trans.position);
 
-            if (distance <= 30.0f)
+            if (distance <= 15.0f)
             {
                 find = true;
                 nvAgent.destination = playerTransform.position;
@@ -101,12 +102,12 @@ public class ZombieScript_Story : MonoBehaviour
                 else if (hitted)
                     Running();
             }
-            else if (distance > 30.0f && !hitted)
-            {
-                hitted = false;
-                find = false;
-                Idle();
-            }
+            //else if (distance > 30.0f && !hitted)
+            //{
+            //    hitted = false;
+            //    find = false;
+            //    Idle();
+            //}
             else if (hitted)
             {
                 find = true;
@@ -243,5 +244,10 @@ public class ZombieScript_Story : MonoBehaviour
         Hp = 5;
         WalkSpeed = 2.0f;
         RunSpeed = 3.5f;
+    }
+
+    public void Berserk()
+    {
+        hitted = true;
     }
 }

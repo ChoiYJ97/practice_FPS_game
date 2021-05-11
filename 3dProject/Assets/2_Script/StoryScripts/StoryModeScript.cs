@@ -36,14 +36,12 @@ public class StoryModeScript : MonoBehaviour
         }
     }
 
-    [Header("Revive Place")]
-    public Transform[] RevivePos;
-
     [Header("Player Transform")]
     public Transform playerTrans;
 
     [Header("Quest")]
     public Text Start_QuestTxt;
+    public GameObject GoSewer_GuideTxt;
     public Transform[] NPCs;
     public GameObject[] Icons;
     public GameObject StartMapEkey;
@@ -63,9 +61,21 @@ public class StoryModeScript : MonoBehaviour
                         "그럼 중사의 건투를 빌겠네."
     };
 
+    [Header("Sewer blocks")]
+    public GameObject Block_RoundRoute;
+    public GameObject Block_StairBlocking;
+
+    [Header("Text in Sewer")]
+    public GameObject[] guides;
+
+    [Header("QuestObj in Sewer")]
+    public Transform[] Qobjs;
+    public GameObject[] Ekey;
+    
 
 
-    bool start, inSewer;
+
+    bool start, QuestStart, inSewer, arriveSewer, Sewer_Last;
     float distance, SewerEntDis;
     int startQuestInteger;
 
@@ -78,15 +88,23 @@ public class StoryModeScript : MonoBehaviour
     void Start()
     {
         BlackOutImg.color = new Color(0, 0, 0, 1.0f);
-        getsetTime = 2.0f;
+
+        getsetTime = 1.5f;
         distance = 0;
         SewerEntDis = 0;
         startQuestInteger = 0;
+
         start = false;
         inSewer = false;
+        QuestStart = false;
+        arriveSewer = false;
+        Sewer_Last = false;
+
         StartCanvas.SetActive(false);
+        GoSewer_GuideTxt.SetActive(false);
         StartMapEkey.SetActive(false);
         SewerMapEkey.SetActive(false);
+        guides[5].SetActive(false);
     }
 
     void Update()
@@ -97,7 +115,18 @@ public class StoryModeScript : MonoBehaviour
         if(!inSewer)
             UpdateStartQuest();
 
-        EnterSewer();
+        if(QuestStart)
+            EnterSewer();
+
+        if(!Sewer_Last)
+        {
+            Dis_QuestNPC(Qobjs[0], Ekey[0], guides[0]);
+            Dis_QuestNPC(Qobjs[1], Ekey[0], guides[1]);
+            Dis_QuestNPC(Qobjs[2], Ekey[1], guides[2]);
+            Dis_QuestNPC(Qobjs[3], Ekey[0], guides[3]);
+            Dis_QuestNPC(Qobjs[4], Ekey[2], guides[4]);
+        }
+
     }
 
     public void UpdateStartQuest()
@@ -117,6 +146,11 @@ public class StoryModeScript : MonoBehaviour
         {
             StartCanvas.SetActive(false);
         }
+
+        if (startQuestInteger == 11)
+        {
+            QuestStart = true;          
+        }
     }
     public void StartQuestTextControl(int i)
     {
@@ -127,6 +161,7 @@ public class StoryModeScript : MonoBehaviour
 
     public void EnterSewer()
     {
+        GoSewer_GuideTxt.SetActive(true);
         SewerEntDis = Vector3.Distance(playerTrans.position, StartPos.position);
         if (SewerEntDis <= 3.0f)
         {
@@ -134,6 +169,7 @@ public class StoryModeScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inSewer = true;
+                GoSewer_GuideTxt.SetActive(false);
                 StartCoroutine(TranslateDelay());
             }
         }
@@ -144,7 +180,55 @@ public class StoryModeScript : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         playerTrans.position = new Vector3(SewerPos.position.x, SewerPos.position.y, SewerPos.position.z);
         AllLightControls._instance.StartMapLightsControl(0);
+        arriveSewer = true;
+        inSewer = false;
     }
+
+    public void TxtControlInSewer(int i)
+    {
+        for(int num = 0; num < guides.Length; num++)
+        {
+            guides[num].SetActive(false);
+        }
+        guides[i].SetActive(true);
+    }
+
+    public void Dis_QuestNPC(Transform ObjTrans, GameObject E, GameObject guideTxt)
+    {
+        float dis = Vector3.Distance(ObjTrans.position, playerTrans.position);
+        if (ObjTrans == null || guideTxt == null)
+            return;
+        if(dis <= 2.0f)
+        {
+            if(E != null)
+                E.SetActive(true);
+            guideTxt.SetActive(true);
+            if (ObjTrans == Qobjs[4] && Input.GetKeyDown(KeyCode.E))
+            {
+                Sewer_Last = true;
+                guides[5].SetActive(true);
+                Block_StairBlocking.SetActive(false);
+                Destroy(E);
+                Destroy(guideTxt);
+            }
+            else
+                guides[5].SetActive(false);
+
+            if(ObjTrans == Qobjs[2] && Input.GetKeyDown(KeyCode.E))
+            {
+                Block_RoundRoute.SetActive(false);
+                Destroy(E);
+                Destroy(guides[1]);
+            }
+        }
+        else
+        {
+            if (E != null)
+                E.SetActive(false);
+            guideTxt.SetActive(false);
+        }
+    }
+
 
 
     public void BlackOutControl(int i) // 0 = 켜짐 , 1 = 꺼짐
@@ -159,7 +243,7 @@ public class StoryModeScript : MonoBehaviour
         if(i == 1)//검은 화면 꺼짐
         {
             BlackOutImg.CrossFadeAlpha(0.0f, lengthOfTime, false);
-            if(BlackOutImg.color.a <= 0.1f)
+            if(BlackOutImg.color.a <= 0.01f)
                 BlackOut.SetActive(false);
         }
     }

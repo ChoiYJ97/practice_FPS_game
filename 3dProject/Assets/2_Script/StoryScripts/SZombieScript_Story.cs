@@ -155,7 +155,7 @@ public class SZombieScript_Story : MonoBehaviour
 
     public void HardOrNot()
     {
-        MaxHp = 70;
-        WalkSpeed = 2.0f;
+        MaxHp = 100;
+        WalkSpeed = 2.5f;
     }
 }
