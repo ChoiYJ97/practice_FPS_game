@@ -6,16 +6,19 @@ using UnityEngine.UI;
 
 public class PlayerScript_Story : MonoBehaviour
 {
+    public AutomaticGunScriptLPFP_Story AmmoAndGrenade;
     public Slider HpSlider;
     public Image HittedImpact;
     public Image HpFillImg;
     public Transform[] revivePos;
+    public GameObject[] kitIcons;
     public int hp = 100;
     float hittedNum, GoalHitAlpha, decre;
     bool hitted;
     bool isDead;
     bool canRevive;
     int Damage;
+    int kitcount;
 
     void Start()
     {
@@ -28,6 +31,9 @@ public class PlayerScript_Story : MonoBehaviour
         canRevive = false;
         HittedImpact.color = new Color(HittedImpact.color.r,
                 HittedImpact.color.g, HittedImpact.color.b, GoalHitAlpha);
+        kitIcons[0].SetActive(false);
+        kitIcons[1].SetActive(false);
+        kitIcons[2].SetActive(false);
     }
 
     void Update()
@@ -36,6 +42,7 @@ public class PlayerScript_Story : MonoBehaviour
         {
             hp = 100;
             gameObject.transform.position = revivePos[0].position;
+            AmmoAndGrenade.GrenadeSupplement();
             canRevive = false;
             isDead = false;
         }
@@ -69,6 +76,12 @@ public class PlayerScript_Story : MonoBehaviour
                 HpFillImg.color = new Color(255, 0, 0, HpFillImg.color.a);
             else
                 HpFillImg.color = new Color(255, 255, 255, HpFillImg.color.a);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            StartCoroutine(HealDelay());
+            UseKit();
         }
     }
 
@@ -114,5 +127,31 @@ public class PlayerScript_Story : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         canRevive = true;
+    }
+    IEnumerator HealDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+    }
+
+    public void getKit()
+    {
+        if (kitcount >= 3)
+            return;
+        kitcount++;
+        kitIcons[kitcount - 1].SetActive(true);
+    }
+
+    public void UseKit()
+    {
+        if (kitcount <= 0)
+            return;
+        kitcount--;
+        kitIcons[kitcount].SetActive(false);
+        hp = 100;
+    }
+
+    public int currentKitcount()
+    {
+        return kitcount;
     }
 }

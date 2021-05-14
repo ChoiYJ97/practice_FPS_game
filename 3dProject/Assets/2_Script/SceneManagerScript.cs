@@ -79,11 +79,14 @@ public class SceneManagerScript : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Return) && quit)
             {
                 QuitWindTextControl();
+                timescaleControl();
+                StartCoroutine(Delay());
                 Quit.SetActive(false);
                 if (curMode == 2 || curMode == 3)
                     Lobby_Game();
                 else if (curMode == 1)
-                    Exit_Game(); 
+                    Exit_Game();
+                quit = false;
             }
         }
     }
@@ -194,5 +197,10 @@ public class SceneManagerScript : MonoBehaviour
                 Text_Mission.SetActive(true);
                 break;
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.2f);
     }
 }

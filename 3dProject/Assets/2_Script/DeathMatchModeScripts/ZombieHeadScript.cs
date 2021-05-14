@@ -20,7 +20,7 @@ public class ZombieHeadScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Bullet")
+        if (collision.transform.tag == "Bullet" && !Zom.isinterval())
         {
             Debug.Log("hit");
 

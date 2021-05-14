@@ -275,11 +275,13 @@ public class AutomaticGunScriptLPFP_Story : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && !isInspecting)
         {
             anim.Play("Knife Attack 1", 0, 0f);
+            StartCoroutine(KnifeDelay());
         }
         //Play knife attack 2 animation when F key is pressed
         if (Input.GetKeyDown(KeyCode.F) && !isInspecting)
         {
             anim.Play("Knife Attack 2", 0, 0f);
+            StartCoroutine(KnifeDelay());
         }
 
         //Throw grenade when pressing Number3 key
@@ -462,6 +464,11 @@ public class AutomaticGunScriptLPFP_Story : MonoBehaviour
                 anim.SetBool("Run", false);
             }
         }
+    }
+
+    private IEnumerator KnifeDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 
     private IEnumerator GrenadeSpawnDelay()

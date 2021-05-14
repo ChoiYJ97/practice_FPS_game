@@ -29,12 +29,12 @@ public class Medickit_Story : MonoBehaviour
             return;
         }
         distance = Vector3.Distance(transMeditKit.position, transPlayer.position);
-        if (distance <= 2.0f)
+        if (distance <= 2.5f)
         {
             PressEkey.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Player.hp = 100;
+                Player.getKit();
                 used = 1;
             }
         }

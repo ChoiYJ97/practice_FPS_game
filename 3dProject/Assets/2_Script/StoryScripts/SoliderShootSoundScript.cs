@@ -17,6 +17,7 @@ public class SoliderShootSoundScript : MonoBehaviour
         Audio = gameObject.GetComponent<AudioSource>();
         PlayStart = false;
         stop = 0;
+        Audio.clip = clip;
     }
 
     void Update()
@@ -27,20 +28,17 @@ public class SoliderShootSoundScript : MonoBehaviour
             ResetSound();
             return;
         }
-        SoundControl();
-    }
-    public void SoundControl()
-    {
+
         timecheck += Time.deltaTime;
-        if (timecheck > 10.0f && !PlayStart)
+        if (timecheck > 10.0f+playtime && !PlayStart)
         {
             PlayStart = true;
+            Audio.Play();
             timecheck = 0;
         }
 
         if (playtime <= timecheck && PlayStart)
         {
-            Audio.clip = clip;
             Audio.Play();
             timecheck = 0;
             stop++;

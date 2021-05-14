@@ -49,7 +49,7 @@ public class LobbyCameraMoving : MonoBehaviour
 
         nvAgent = go.GetComponent<NavMeshAgent>();
 
-        Buttons = new GameObject[10];
+        Buttons = new GameObject[11];
 
         CameraTrans = go.GetComponent<Transform>();
 
@@ -63,6 +63,7 @@ public class LobbyCameraMoving : MonoBehaviour
         Buttons[7] = GameObject.Find("GoTutorialModeButton");
         Buttons[8] = GameObject.Find("GoBackButton_tu");
         Buttons[9] = GameObject.Find("GoDeathMachModeButtonHard");
+        Buttons[10] = GameObject.Find("GoInStoryMode");
 
         go = GameObject.Find("DetourSign");
 
@@ -213,6 +214,7 @@ public class LobbyCameraMoving : MonoBehaviour
         if (StoryDis <= activeDis)
         {
             Buttons[4].gameObject.SetActive(true);
+            Buttons[10].gameObject.SetActive(true);
         }
         else if (DeathMDis <= activeDis)
         {
@@ -225,6 +227,7 @@ public class LobbyCameraMoving : MonoBehaviour
             Buttons[4].gameObject.SetActive(false);
             Buttons[5].gameObject.SetActive(false);
             Buttons[9].gameObject.SetActive(false);
+            Buttons[10].gameObject.SetActive(false);
         }
     }
 
@@ -251,6 +254,8 @@ public class LobbyCameraMoving : MonoBehaviour
         Transform secLoc = DestiObj[6].GetComponent<Transform>();
         CameraTrans.LookAt(secLoc.position);
     }
+
+   
 
 
     public void SelectModeLookat()

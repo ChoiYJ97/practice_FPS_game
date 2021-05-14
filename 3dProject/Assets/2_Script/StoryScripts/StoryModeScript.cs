@@ -161,7 +161,8 @@ public class StoryModeScript : MonoBehaviour
 
     public void EnterSewer()
     {
-        GoSewer_GuideTxt.SetActive(true);
+        if(GoSewer_GuideTxt != null)
+            GoSewer_GuideTxt.SetActive(true);
         SewerEntDis = Vector3.Distance(playerTrans.position, StartPos.position);
         if (SewerEntDis <= 3.0f)
         {
@@ -171,6 +172,8 @@ public class StoryModeScript : MonoBehaviour
                 inSewer = true;
                 GoSewer_GuideTxt.SetActive(false);
                 StartCoroutine(TranslateDelay());
+                QuestStart = false;
+                Destroy(GoSewer_GuideTxt);
             }
         }
     }

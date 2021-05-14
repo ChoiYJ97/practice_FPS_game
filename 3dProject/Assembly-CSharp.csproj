@@ -94,7 +94,9 @@
     <Compile Include="Assets\2_Script\StoryScripts\AllLightControls.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\AmmoBox_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\AutomaticGunScriptLPFP_Story.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\BigRoomLightScript.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\CarNavigation.cs" />
+    <Compile Include="Assets\2_Script\StoryScripts\GameOver.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\GrenadeBox_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\GrenadeScript_Story.cs" />
     <Compile Include="Assets\2_Script\StoryScripts\Medickit_Story.cs" />
