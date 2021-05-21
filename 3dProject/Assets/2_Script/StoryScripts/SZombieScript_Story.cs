@@ -25,6 +25,12 @@ public class SZombieScript_Story : MonoBehaviour
     [SerializeField] int Hp;
     [SerializeField] CapsuleCollider ArmR;
 
+    public AudioClip[] Scream;
+    AudioSource ZomScream;
+    ZombieSoundScripts Zs;
+
+
+
     float distance;
     float timecheck = 0;
     bool start;
@@ -39,6 +45,9 @@ public class SZombieScript_Story : MonoBehaviour
         nvAgent = gameObject.GetComponent<NavMeshAgent>();
         aniZombie = gameObject.GetComponent<Animator>();
         Box = gameObject.GetComponent<BoxCollider>();
+        ZomScream = gameObject.GetComponent<AudioSource>();
+        Zs = GameObject.Find("SoundColliderGO").GetComponent<ZombieSoundScripts>();
+
     }
     void Start()
     {
@@ -66,6 +75,8 @@ public class SZombieScript_Story : MonoBehaviour
             Box.size = new Vector3(0, 0, 0);
             nvAgent.height = 0.01f;
             timecheck += Time.deltaTime;
+            Zs.ZombieDied();
+
             Dead();
             if (timecheck >= 2.5f)
             {
@@ -129,6 +140,33 @@ public class SZombieScript_Story : MonoBehaviour
         aniZombie.SetInteger("Anistate", (int)aniState.IDLE);
         ArmColliderIsNotTriggr();
     }
+
+    int i = 0;
+    void soundControl(int curAni)
+    {
+        if (i != curAni && !ZomScream.isPlaying)
+        {
+            ZomScream.clip = Scream[2];
+            ZomScream.Pause();
+            i = curAni;
+        }
+        else
+            return;
+
+        if (!ZomScream.isPlaying && curAni == 4)
+        {
+            ZomScream.clip = Scream[0];
+            ZomScream.Play();
+        }
+
+        else if (curAni == 5)
+        {
+            ZomScream.clip = Scream[1];
+            ZomScream.Play();
+        }
+    }
+
+
 
     public void ZomSpeed(float speed)
     {

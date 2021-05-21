@@ -5,9 +5,12 @@ using UnityEngine;
 public class LobbyZombie : MonoBehaviour
 {
     Animator ani;
+    public AudioClip Clip;
+    AudioSource AS;
 
     void Start()
     {
+        AS = gameObject.GetComponent<AudioSource>();
         ani = gameObject.GetComponent<Animator>();
     }
 
@@ -17,6 +20,9 @@ public class LobbyZombie : MonoBehaviour
 
     public void attackaniplay()
     {
+        AS.clip = Clip;
+        AS.Play();
         ani.SetBool("clicked", true);
+        
     }
 }

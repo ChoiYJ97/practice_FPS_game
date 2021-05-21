@@ -83,6 +83,7 @@
     <Compile Include="Assets\2_Script\LobbyScripts\LobbyZombie.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\SignBroadScript.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\TDTextScore.cs" />
+    <Compile Include="Assets\2_Script\LobbyScripts\TextMove.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\TitleScript.cs" />
     <Compile Include="Assets\2_Script\LobbyScripts\TutorialTextScript.cs" />
     <Compile Include="Assets\2_Script\PlayerScripts\KnifeScript.cs" />

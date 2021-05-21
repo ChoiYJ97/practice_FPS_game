@@ -9,6 +9,7 @@ public class BigRoomLightScript : MonoBehaviour
     public Transform Player;
     Transform GTrans;
     float dis;
+    AudioSource AS;
 
 
     void Start()
@@ -17,12 +18,13 @@ public class BigRoomLightScript : MonoBehaviour
         GTrans = this.gameObject.GetComponent<Transform>();
         for (int i = 0; i < Lights.Length; i++)
             Lights[i].SetActive(false);
+        AS = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
     {
         dis = Vector3.Distance(Player.position, GTrans.position);
-        if(dis <= 1.5f)
+        if(dis <= 2.5f)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -30,6 +32,7 @@ public class BigRoomLightScript : MonoBehaviour
                 foreach(GameObject gm in Lights)
                 {
                     gm.SetActive(true);
+                    AS.Play();
                 }
             }
         }

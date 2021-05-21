@@ -11,7 +11,7 @@ public class SignBroadScript : MonoBehaviour
     public GameObject RightSignBroadGo;
 
     [Header("Transforms")]
-    public Transform gamemodeText;
+    public GameObject gamemodeText;
     public Transform cameraTrans;
     public Transform BroadTrans;
     public Transform StartTextTrans;
@@ -24,6 +24,7 @@ public class SignBroadScript : MonoBehaviour
     public MeshRenderer BroadMeshRenderer;
 
     Material[] materials;
+    public TextMove tm;
 
     //float GMTextYposmax = 3.76f;
     float dis, timecheck;
@@ -35,7 +36,7 @@ public class SignBroadScript : MonoBehaviour
         timecheck = 0;
         Selected = false;
         dis = 0;
-
+        gamemodeText.SetActive(false);
         SignBroadGo.SetActive(false);
         RightSignBroadGo.SetActive(false);
     }
@@ -52,10 +53,11 @@ public class SignBroadScript : MonoBehaviour
 
     void GMTextControl()
     {
-        if(dis <= 4.0f)
+        if (dis <= 4.0f)
         {
             timecheck += Time.deltaTime;
-            gamemodeText.position = new Vector3(gamemodeText.position.x, gamemodeText.position.y+0.003f, gamemodeText.position.z);
+            gamemodeText.SetActive(true);
+            tm.Moving();
         }
 
         if (timecheck >= 1.3f)

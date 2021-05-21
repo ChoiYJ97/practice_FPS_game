@@ -8,6 +8,7 @@ public class CarNavigation : MonoBehaviour
     public Transform Desti;
     public GameObject carCam;
     public GameObject Player;
+    public AudioSource AS;
     Transform carTrans;
     NavMeshAgent AI;
     float dis;
@@ -40,6 +41,7 @@ public class CarNavigation : MonoBehaviour
             {
                 arrive = true;
                 timecheck = 0;
+                AS.Pause();
             }
         }
 

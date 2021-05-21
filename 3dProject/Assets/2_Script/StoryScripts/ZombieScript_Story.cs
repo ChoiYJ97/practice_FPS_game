@@ -18,6 +18,7 @@ public class ZombieScript_Story : MonoBehaviour
 
     public AudioClip[] Scream;
     AudioSource ZomScream;
+    ZombieSoundScripts Zs;
 
     public enum aniState
     {
@@ -47,6 +48,7 @@ public class ZombieScript_Story : MonoBehaviour
         aniZombie = gameObject.GetComponent<Animator>();
         Box = gameObject.GetComponent<BoxCollider>();
         ZomScream = gameObject.GetComponent<AudioSource>();
+        Zs = GameObject.Find("SoundColliderGO").GetComponent<ZombieSoundScripts>();
     }
     void Start()
     {
@@ -78,6 +80,7 @@ public class ZombieScript_Story : MonoBehaviour
             Box.size = new Vector3(0, 0, 0);
             nvAgent.height = 0.01f;
             timecheck += Time.deltaTime;
+            Zs.ZombieDied();
             Dead();
             if (timecheck >= 2.5f)
             {

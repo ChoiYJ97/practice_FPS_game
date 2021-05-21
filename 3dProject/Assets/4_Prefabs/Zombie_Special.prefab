@@ -1367,6 +1367,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 100
   ArmR: {fileID: 1661580439268187089}
+  Scream:
+  - {fileID: 8300000, guid: b5dbd1bbcc3d51641b9a9a9eb9618589, type: 3}
+  - {fileID: 8300000, guid: 3067a916cce6c4549bbc0043b28480a4, type: 3}
+  - {fileID: 0}
 --- !u!1 &4326305104833735470
 GameObject:
   m_ObjectHideFlags: 0

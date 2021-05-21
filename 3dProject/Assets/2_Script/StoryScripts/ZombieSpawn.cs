@@ -10,6 +10,10 @@ public class ZombieSpawn : MonoBehaviour
     public GameObject SZomPrefabs;
     public Transform[] Spawner_n; // 5군데 스폰
     public Transform[] Spawner_s; // 3군데 스폰
+
+    [Header("Zombie Spawn Count")]
+    public int nzSpawnNum;
+    public int szSpawnNum;
     float dis;
     bool Berserk;
     void Start()
@@ -40,13 +44,13 @@ public class ZombieSpawn : MonoBehaviour
 
     public void NzombieSpawn()
     {
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < nzSpawnNum; i++)
             GameObject.Instantiate(ZomPrefabs, Spawner_n[i].position, Spawner_n[i].rotation);
     }
 
     public void SzombieSpawn()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < szSpawnNum; i++)
             GameObject.Instantiate(SZomPrefabs, Spawner_s[i].position, Spawner_s[i].rotation);
     }
 

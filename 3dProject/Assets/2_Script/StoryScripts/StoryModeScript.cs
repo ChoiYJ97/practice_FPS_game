@@ -71,6 +71,9 @@ public class StoryModeScript : MonoBehaviour
     [Header("QuestObj in Sewer")]
     public Transform[] Qobjs;
     public GameObject[] Ekey;
+
+    [Header("Minimap")]
+    public GameObject Minimap;
     
 
 
@@ -105,6 +108,7 @@ public class StoryModeScript : MonoBehaviour
         StartMapEkey.SetActive(false);
         SewerMapEkey.SetActive(false);
         guides[5].SetActive(false);
+        Minimap.SetActive(false);
     }
 
     void Update()
@@ -185,6 +189,7 @@ public class StoryModeScript : MonoBehaviour
         AllLightControls._instance.StartMapLightsControl(0);
         arriveSewer = true;
         inSewer = false;
+        Minimap.SetActive(true);
     }
 
     public void TxtControlInSewer(int i)
