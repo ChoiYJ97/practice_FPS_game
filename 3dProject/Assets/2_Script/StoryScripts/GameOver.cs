@@ -26,6 +26,7 @@ public class GameOver : MonoBehaviour
     IEnumerator GameoverDelay()
     {
         yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 0;
         OverWindow.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

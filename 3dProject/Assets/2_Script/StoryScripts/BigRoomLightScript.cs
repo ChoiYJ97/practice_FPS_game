@@ -10,6 +10,7 @@ public class BigRoomLightScript : MonoBehaviour
     Transform GTrans;
     float dis;
     AudioSource AS;
+    public GameObject Block_SewerClearBlock;
 
 
     void Start()
@@ -19,6 +20,7 @@ public class BigRoomLightScript : MonoBehaviour
         for (int i = 0; i < Lights.Length; i++)
             Lights[i].SetActive(false);
         AS = gameObject.GetComponent<AudioSource>();
+        Block_SewerClearBlock.SetActive(true);
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class BigRoomLightScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Block_SewerClearBlock.SetActive(false);
                 ElectronicBox.color = Color.green;
                 foreach(GameObject gm in Lights)
                 {

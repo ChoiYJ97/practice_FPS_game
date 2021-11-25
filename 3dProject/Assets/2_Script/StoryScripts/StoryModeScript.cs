@@ -171,6 +171,7 @@ public class StoryModeScript : MonoBehaviour
         if (SewerEntDis <= 3.0f)
         {
             StartMapEkey.SetActive(true);
+            SewerMapEkey.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inSewer = true;
@@ -178,6 +179,8 @@ public class StoryModeScript : MonoBehaviour
                 StartCoroutine(TranslateDelay());
                 QuestStart = false;
                 Destroy(GoSewer_GuideTxt);
+                StartMapEkey.SetActive(false);
+                SewerMapEkey.SetActive(false);
             }
         }
     }

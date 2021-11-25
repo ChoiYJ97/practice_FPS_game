@@ -20,7 +20,8 @@ public class ZombieSoundScripts : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Zombie"|| other.transform.tag == "SpecialZombie" && !ZomScream.isPlaying)
+        //if (other.transform.tag == "Zombie"|| other.transform.tag == "SpecialZombie" && !ZomScream.isPlaying)
+        if (other.transform.tag == "Zombie" && !ZomScream.isPlaying)
         {
             int i = Random.Range(0, 1);
             ZomScream.clip = Scream[i];
@@ -33,7 +34,8 @@ public class ZombieSoundScripts : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Zombie"|| other.transform.tag == "SpecialZombie" && ZomScream.isPlaying)
+        //if (other.transform.tag == "Zombie"|| other.transform.tag == "SpecialZombie" && ZomScream.isPlaying)
+        if (other.transform.tag == "Zombie"&& ZomScream.isPlaying)
         {
             ZomScream.clip = Scream[2];
             ZomScream.Pause();

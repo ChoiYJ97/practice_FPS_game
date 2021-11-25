@@ -211,6 +211,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 733832778790911535, guid: ddd70014ef98920429b42f09cc5560a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1956728463499775282, guid: ddd70014ef98920429b42f09cc5560a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,6 +275,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scene_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376293938144049693, guid: ddd70014ef98920429b42f09cc5560a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209754163318600373, guid: ddd70014ef98920429b42f09cc5560a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989558890048001575, guid: ddd70014ef98920429b42f09cc5560a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd70014ef98920429b42f09cc5560a6, type: 3}

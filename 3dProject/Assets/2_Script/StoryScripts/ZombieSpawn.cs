@@ -16,14 +16,18 @@ public class ZombieSpawn : MonoBehaviour
     public int szSpawnNum;
     float dis;
     bool Berserk;
+    bool Once;
     void Start()
     {
         dis = 0;
         Berserk = false;
+        Once = false;
     }
 
     void Update()
     {
+        if (Once)
+            return;
         dis = Vector3.Distance(Player.position, electronic_box.position);
         if(dis <= 2.0f && Input.GetKeyDown(KeyCode.E))
         {
@@ -32,25 +36,26 @@ public class ZombieSpawn : MonoBehaviour
 
         if(Berserk)
         {
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < nzSpawnNum; i++)
             {
                 NzombieSpawn();
                 StartCoroutine(SpawnDelay());
             }
             SzombieSpawn();
             Berserk = false;
+            Once = true;
         }
     }
 
     public void NzombieSpawn()
     {
-        for(int i = 0; i < nzSpawnNum; i++)
+        for(int i = 0; i < Spawner_n.Length; i++)
             GameObject.Instantiate(ZomPrefabs, Spawner_n[i].position, Spawner_n[i].rotation);
     }
 
     public void SzombieSpawn()
     {
-        for (int i = 0; i < szSpawnNum; i++)
+        for (int i = 0; i < Spawner_s.Length; i++)
             GameObject.Instantiate(SZomPrefabs, Spawner_s[i].position, Spawner_s[i].rotation);
     }
 

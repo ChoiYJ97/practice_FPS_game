@@ -20,6 +20,8 @@ public class PlayerScript_Story : MonoBehaviour
     int Damage;
     int kitcount;
 
+    public Transform[] MinimapObj;
+
     void Start()
     {
         hittedNum = 0.4901961f;
@@ -38,7 +40,9 @@ public class PlayerScript_Story : MonoBehaviour
 
     void Update()
     {
-        if(canRevive && Input.anyKeyDown)
+        MinimapObj[0].position = new Vector3(gameObject.transform.position.x, -149, gameObject.transform.position.z);
+        MinimapObj[1].position = new Vector3(gameObject.transform.position.x, -137, gameObject.transform.position.z);
+        if (canRevive && Input.anyKeyDown)
         {
             hp = 100;
             gameObject.transform.position = revivePos[0].position;
@@ -49,6 +53,7 @@ public class PlayerScript_Story : MonoBehaviour
 
         if (hp <= 0)
         {
+            HpSlider.value = 0;
             StoryModeScript._instance.BlackOutControl(0);
             Isdead();
             StartCoroutine(Revive());
@@ -125,8 +130,10 @@ public class PlayerScript_Story : MonoBehaviour
 
     IEnumerator Revive()
     {
+        StoryModeScript._instance.BlackOutControl(0);
         yield return new WaitForSeconds(1.0f);
         canRevive = true;
+        StoryModeScript._instance.BlackOutControl(1);
     }
     IEnumerator HealDelay()
     {

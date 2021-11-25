@@ -18,17 +18,17 @@ public class IconScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timecheck += Time.deltaTime;
-        if(timecheck <= 1.0f)
-        {
-            iconTrans.Translate(Vector3.up * Time.deltaTime*0.3f);
-        }
-        else if(timecheck > 1.0f)
-        {
-            iconTrans.Translate(Vector3.down * Time.deltaTime * 0.3f);
-            if (timecheck >= 2.0f)
-                timecheck = 0;
-        }
+        //timecheck += Time.deltaTime;
+        //if(timecheck <= 1.0f)
+        //{
+        //    iconTrans.Translate(Vector3.up * Time.deltaTime*0.3f);
+        //}
+        //else if(timecheck > 1.0f)
+        //{
+        //    iconTrans.Translate(Vector3.down * Time.deltaTime * 0.3f);
+        //    if (timecheck >= 1.94f)
+        //        timecheck = 0;
+        //}
 
         iconTrans.Rotate(0, 90.0f * Time.deltaTime, 0.0f);
     }
